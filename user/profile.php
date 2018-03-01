@@ -100,7 +100,7 @@ require_once("../dbcon.php");?>
                   <li><a href="form.html"><i class="fa fa-edit"></i> My Application <span class="fa fa-chevron-down"></span></a>
                    
                   </li>
-                  <li><a href="general_elements.html"><i class="fa fa-desktop"></i> Jobs <span class="fa fa-chevron-down"></span></a>
+                  <li><a href="view_jobpost.php"><i class="fa fa-desktop"></i> Jobs <span class="fa fa-chevron-down"></span></a>
                    
                   </li>
                   <li><a href="general_elements.html"><i class="fa fa-inbox"></i> Mailbox <span class="fa fa-chevron-down"></span></a>
