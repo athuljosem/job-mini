@@ -65,7 +65,7 @@ require_once("../dbcon.php");?>
     <link href="../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
     <!-- jQuery custom content scroller -->
     <link href="../vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
- 
+
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
   </head>
@@ -102,13 +102,15 @@ require_once("../dbcon.php");?>
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a href="profile.php"><i class="fa fa-home"></i> Edit Profile <span class="fa fa-chevron-down"></span></a>
+                  <li><a href="dashboard.php"><i class="fa fa-home"></i> Dashboard <span class="fa fa-chevron-down"></span></a>
+                    
+                  <li><a href="profile.php"><i class="fa fa-edit"></i> Edit Profile <span class="fa fa-chevron-down"></span></a>
                     
                   </li>
                   <li><a href="form.html"><i class="fa fa-edit"></i> My Application <span class="fa fa-chevron-down"></span></a>
                    
                   </li>
-                  <li><a href="general_elements.html"><i class="fa fa-desktop"></i> Jobs <span class="fa fa-chevron-down"></span></a>
+                  <li><a href="view_jobpost.php"><i class="fa fa-desktop"></i> Jobs <span class="fa fa-chevron-down"></span></a>
                    
                   </li>
                   <li><a href="general_elements.html"><i class="fa fa-inbox"></i> Mailbox <span class="fa fa-chevron-down"></span></a>
@@ -244,5 +246,4 @@ require_once("../dbcon.php");?>
 }
 }
 ?>
-        <div class="right_col" role="main">
           <!--pagecontet-->

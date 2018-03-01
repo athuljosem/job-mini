@@ -319,6 +319,7 @@ require_once("../dbcon.php");?>
       <div class="container">
         <div class="">
           <div class="col-md-8 col-md-offset-2 well">
+          
             <form method="post" action="updateprofile.php" enctype="multipart/form-data">
             
               <div class="form-group">
