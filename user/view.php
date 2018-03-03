@@ -6,6 +6,7 @@
               <div class="col-md-12">
                 <form method="post" action="applyjob.php">
               <?php
+
                $sql = "SELECT * FROM job_post WHERE id_jobpost='$_GET[id]'";
                 $result = $conn->query($sql);
 
@@ -18,7 +19,21 @@
                   <h1><b><i><?php echo $row['jobtitle']; ?></i></b></h1>
                 </div>
                 <div class="pull-right">
-                  <a href="view_jobpost.php" class="btn btn-default btn-lg btn-flat margin-top-20"><i class="fa fa-arrow-circle-left"></i> Back</a>
+                  <?php
+if($_SESSION['dashboard'] == 'true')
+{
+  ?>
+  <a href="dashboard.php" class="btn btn-default btn-lg btn-flat margin-top-20"><i class="fa fa-arrow-circle-left"></i> Back</a>
+  <?php
+}
+else
+{
+  ?>
+  <a href="view_jobpost.php" class="btn btn-default btn-lg btn-flat margin-top-20"><i class="fa fa-arrow-circle-left"></i> Back</a>
+  <?php
+}  
+                  
+                  ?>
                 </div>
                 <div class="clearfix"></div>
                 <hr>

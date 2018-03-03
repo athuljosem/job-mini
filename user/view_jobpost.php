@@ -5,7 +5,7 @@
          <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>MY JOB_POST</h2>
+                    <h2>ALL JOB_POST</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -44,6 +44,7 @@
                       </thead>
                       <tbody>
                         <?php
+                        $_SESSION['dashboard'] = 'false';
                      $sql = "SELECT * FROM job_post ";
                       $result = $conn->query($sql);
 
