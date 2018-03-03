@@ -113,7 +113,7 @@ require_once("../dbcon.php");?>
                   <li><a href="view_jobpost.php"><i class="fa fa-desktop"></i> Jobs </a>
                    
                   </li>
-                  <li><a href="general_elements.html"><i class="fa fa-inbox"></i> Mailbox </a>
+                  <li><a href="mailbox.php"><i class="fa fa-inbox"></i> Mailbox </a>
                    
                   </li>
                  
