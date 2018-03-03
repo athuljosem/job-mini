@@ -6,7 +6,7 @@
               <div class="col-md-12">
                 <form method="post" action="applyjob.php">
               <?php
-               $sql = "SELECT * FROM job_post WHERE id_company='$_SESSION[companyid]' AND id_jobpost='$_GET[id]'";
+               $sql = "SELECT * FROM job_post WHERE id_jobpost='$_GET[id]'";
                 $result = $conn->query($sql);
 
                 //If Job Post exists then display details of post

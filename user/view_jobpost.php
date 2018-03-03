@@ -44,7 +44,7 @@
                       </thead>
                       <tbody>
                         <?php
-                     $sql = "SELECT * FROM job_post WHERE id_company='$_SESSION[companyid]'";
+                     $sql = "SELECT * FROM job_post ";
                       $result = $conn->query($sql);
 
                       //If Job Post exists then display details of post

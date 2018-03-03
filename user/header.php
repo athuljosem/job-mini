@@ -11,12 +11,12 @@ if(isset($_SESSION['username']))
 }
 else
 {
-  header('Location: homepage.php');
+  header('Location: ../index.php');
 }?>
 <?php
 
 if(empty($_SESSION['userid'])) {
-  header("Location: ../homepage.php");
+  header("Location: ../index.php");
   exit();
   
 }
@@ -102,18 +102,18 @@ require_once("../dbcon.php");?>
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a href="dashboard.php"><i class="fa fa-home"></i> Dashboard <span class="fa fa-chevron-down"></span></a>
+                  <li><a href="dashboard.php"><i class="fa fa-home"></i> Dashboard </a>
                     
-                  <li><a href="profile.php"><i class="fa fa-edit"></i> Edit Profile <span class="fa fa-chevron-down"></span></a>
+                  <li><a href="profile.php"><i class="fa fa-edit"></i> Edit Profile </a>
                     
                   </li>
-                  <li><a href="form.html"><i class="fa fa-edit"></i> My Application <span class="fa fa-chevron-down"></span></a>
+                  <li><a href="form.html"><i class="fa fa-edit"></i> My Application </a>
                    
                   </li>
-                  <li><a href="view_jobpost.php"><i class="fa fa-desktop"></i> Jobs <span class="fa fa-chevron-down"></span></a>
+                  <li><a href="view_jobpost.php"><i class="fa fa-desktop"></i> Jobs </a>
                    
                   </li>
-                  <li><a href="general_elements.html"><i class="fa fa-inbox"></i> Mailbox <span class="fa fa-chevron-down"></span></a>
+                  <li><a href="general_elements.html"><i class="fa fa-inbox"></i> Mailbox </a>
                    
                   </li>
                  
