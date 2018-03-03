@@ -1,3 +1,4 @@
+<?php require_once('dbcon.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -108,7 +109,7 @@
 					<div class="col-lg-12">
 						<div class="big-cta">
 							<div class="cta-text">
-								<h2><span>Moderna</span> HTML Business Template</h2>
+								<h2> LATEST JOB POSTS</h2>
 							</div>
 						</div>
 					</div>
@@ -117,80 +118,48 @@
 		</section>
 		<section id="content">
 			<div class="container">
+				
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="row">
+							<?php
+				$sql = "SELECT * FROM job_post Order By rand() limit 4";
+                      $result = $conn->query($sql);
+
+                      //If Job Post exists then display details of post
+                      if($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()) 
+                        {
+                      ?>
 							<div class="col-lg-3">
 								<div class="box">
 									<div class="box-gray aligncenter">
-										<h4>Fully responsive</h4>
+										<h4><?php echo $row['jobtitle']; ?></h4>
 										<div class="icon">
-											<i class="fa fa-desktop fa-3x"></i>
+											<i class="fa fa-desktop"></i>
 										</div>
 										<p>
-											Voluptatem accusantium doloremque laudantium sprea totam rem aperiam.
+											<?php echo $row['description']; ?>
 										</p>
 
 									</div>
-									<div class="box-bottom">
+									<div>
+									<h4><span>salary :</span><?php echo $row['minimumsalary']; ?>-<?php echo $row['maximumsalary']; ?></h4>
+								</div>
+
+									<div class="box-bottom" align="box-bottom">
 										<a href="#">Learn more</a>
 									</div>
 								</div>
 							</div>
-							<div class="col-lg-3">
-								<div class="box">
-									<div class="box-gray aligncenter">
-										<h4>Modern Style</h4>
-										<div class="icon">
-											<i class="fa fa-pagelines fa-3x"></i>
-										</div>
-										<p>
-											Voluptatem accusantium doloremque laudantium sprea totam rem aperiam.
-										</p>
-
-									</div>
-									<div class="box-bottom">
-										<a href="#">Learn more</a>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-3">
-								<div class="box">
-									<div class="box-gray aligncenter">
-										<h4>Customizable</h4>
-										<div class="icon">
-											<i class="fa fa-edit fa-3x"></i>
-										</div>
-										<p>
-											Voluptatem accusantium doloremque laudantium sprea totam rem aperiam.
-										</p>
-
-									</div>
-									<div class="box-bottom">
-										<a href="#">Learn more</a>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-3">
-								<div class="box">
-									<div class="box-gray aligncenter">
-										<h4>Valid HTML5</h4>
-										<div class="icon">
-											<i class="fa fa-code fa-3x"></i>
-										</div>
-										<p>
-											Voluptatem accusantium doloremque laudantium sprea totam rem aperiam.
-										</p>
-
-									</div>
-									<div class="box-bottom">
-										<a href="#">Learn more</a>
-									</div>
-								</div>
-							</div>
+							<?php 
+			}
+		}
+		?>
 						</div>
 					</div>
 				</div>
+				
 				<!-- divider -->
 				<div class="row">
 					<div class="col-lg-12">
