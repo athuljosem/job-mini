@@ -14,6 +14,8 @@
                 if($result->num_rows > 0) {
                   while($row = $result->fetch_assoc()) 
                   {
+                     $sql1 = "SELECT * FROM apply_job WHERE id_jobpost='$row[id_jobpost]' AND id_user='$_SESSION[userid]' ";
+                           $result1 = $conn->query($sql1);
                 ?>
                 <div class="pull-left">
                   <h1><b><i><?php echo $row['jobtitle']; ?></i></b></h1>
@@ -45,7 +47,21 @@ else
                 </div>
 
                 <div class="text-right">
-                  <a href="applyjob.php?id=<?php echo $row['id_jobpost'] ?>" class="btn btn-default btn-lg btn-flat margin-bottom-20 bg-green">Apply job </a>
+                  <?php  if($result1->num_rows > 0){ ?>
+                          <div class="alert alert-info alert-dismissible " >
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                <i class="icon fa fa-ok"></i> Applied
+            </div>
+                    
+                          <?php }
+                          else
+                          {
+                          ?>
+                          <a href="applyjob.php?id=<?php echo $row['id_jobpost'] ?>" class="btn btn-default btn-lg btn-flat margin-bottom-20 bg-green">Apply job </a>
+                          <?php }
+                        
+                          ?>
+                  
                  
                 </div>
                 <div>
