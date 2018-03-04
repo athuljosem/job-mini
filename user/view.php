@@ -50,7 +50,7 @@ else
                   <?php  if($result1->num_rows > 0){ ?>
                           <div class="alert alert-info alert-dismissible " >
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-                <i class="icon fa fa-ok"></i> Applied
+                <i class="icon fa fa-check"></i> Applied
             </div>
                     
                           <?php }

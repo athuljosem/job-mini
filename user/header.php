@@ -107,7 +107,7 @@ require_once("../dbcon.php");?>
                   <li><a href="profile.php"><i class="fa fa-edit"></i> Edit Profile </a>
                     
                   </li>
-                  <li><a href="form.html"><i class="fa fa-edit"></i> My Application </a>
+                  <li><a href="myapplication.php"><i class="fa fa-edit"></i> My Application </a>
                    
                   </li>
                   <li><a href="view_jobpost.php"><i class="fa fa-desktop"></i> Jobs </a>

@@ -33,6 +33,7 @@
                         <tr>
                           <th>job title</th>
                           <th>view</th>
+                          <th>Status</th>
                           <!-- <th>Position</th> 
                           <th>Office</th>
                           <th>Age</th>
