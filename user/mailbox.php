@@ -28,7 +28,7 @@
                     <div class="row">
                       <div class="col-sm-3 mail_list_column">
                         
-                        <a href="#">
+                        <a data-toggle="tab" href="#menu45">
                           <div class="mail_list">
                             <div class="left">
                               <i class="fa fa-circle"></i> 
@@ -40,7 +40,7 @@
                             </div>
                           </div>
                         </a>
-                        <a href="#">
+                        <a data-toggle="tab" href="#menu2">
                           <div class="mail_list">
                             <div class="left">
                               .
@@ -56,8 +56,8 @@
                       <!-- /MAIL LIST -->
 
                       <!-- CONTENT MAIL -->
-                      <div class="col-sm-9 mail_view">
-                        <div class="inbox-body">
+                      <div class="col-sm-9 mail_view tab-content">
+                        <div id="menu45" class="inbox-body tab-pane fade in active">
                           <div class="mail_heading row">
                             <div class="col-md-8">
                               <div class="btn-group">
@@ -84,6 +84,96 @@
                           </div>
                           <div class="view-mail">
                             <p>The Mail Content Comes Here</p>
+                            
+                          </div>
+                          <div class="attachment">
+                            <p>
+                              <span><i class="fa fa-paperclip"></i> 3 attachments — </span>
+                              <a href="#">Download all attachments</a> |
+                              <a href="#">View all images</a>
+                            </p>
+                            <ul>
+                              <li>
+                                <a href="#" class="atch-thumb">
+                                  <img src="images/inbox.png" alt="img" />
+                                </a>
+
+                                <div class="file-name">
+                                  image-name.jpg
+                                </div>
+                                <span>12KB</span>
+
+
+                                <div class="links">
+                                  <a href="#">View</a> -
+                                  <a href="#">Download</a>
+                                </div>
+                              </li>
+
+                              <li>
+                                <a href="#" class="atch-thumb">
+                                  <img src="images/inbox.png" alt="img" />
+                                </a>
+
+                                <div class="file-name">
+                                  img_name.jpg
+                                </div>
+                                <span>40KB</span>
+
+                                <div class="links">
+                                  <a href="#">View</a> -
+                                  <a href="#">Download</a>
+                                </div>
+                              </li>
+                              <li>
+                                <a href="#" class="atch-thumb">
+                                  <img src="images/inbox.png" alt="img" />
+                                </a>
+
+                                <div class="file-name">
+                                  img_name.jpg
+                                </div>
+                                <span>30KB</span>
+
+                                <div class="links">
+                                  <a href="#">View</a> -
+                                  <a href="#">Download</a>
+                                </div>
+                              </li>
+
+                            </ul>
+                          </div>
+                          <div class="btn-group">
+                            <button class="btn btn-sm btn-primary" type="button"><i class="fa fa-reply"></i> Reply</button>
+                          </div>
+                        </div>
+                        <div id="menu2" class="inbox-body tab-pane fade">
+                          <div class="mail_heading row">
+                            <div class="col-md-8">
+                              <div class="btn-group">
+                                <button class="btn btn-sm btn-primary" type="button"><i class="fa fa-reply"></i> Reply</button>
+                              </div>
+                            </div>
+                            <div class="col-md-4 text-right">
+                              <p class="date"> 8:02 PM 12 FEB 2014</p>
+                            </div>
+                            <div class="col-md-12">
+                              <h4> Mail  2</h4>
+                            </div>
+                          </div>
+                          <div class="sender-info">
+                            <div class="row">
+                              <div class="col-md-12">
+                                <strong>Company2</strong>
+                                <span>(companymail2@gmail.com)</span> to
+                                <strong>me</strong>
+                                <!-- <a class="sender-dropdown"><i class="fa fa-chevron-down"></i></a> -->
+                                <br><br>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="view-mail">
+                            <p>The Mail Content 2 Comes Here</p>
                             
                           </div>
                           <div class="attachment">
