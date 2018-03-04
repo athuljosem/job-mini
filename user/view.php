@@ -45,7 +45,8 @@ else
                 </div>
 
                 <div class="text-right">
-                 <input type="submit" name="applyjob" class="btn btn-success" class="pull-right"  value="Apply Job">
+                  <a href="applyjob.php?id=<?php echo $row['id_jobpost'] ?>" class="btn btn-default btn-lg btn-flat margin-bottom-20 bg-green">Apply job </a>
+                 
                 </div>
                 <div>
                 </div>

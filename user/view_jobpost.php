@@ -48,14 +48,30 @@
                      $sql = "SELECT * FROM job_post ";
                       $result = $conn->query($sql);
 
+
                       //If Job Post exists then display details of post
                       if($result->num_rows > 0) {
                         while($row = $result->fetch_assoc()) 
                         {
+                          $sql1 = "SELECT * FROM apply_job WHERE id_jobpost='$row[id_jobpost]' AND id_user='$_SESSION[userid]' ";
+                           $result1 = $conn->query($sql1);
                       ?>
                       <tr>
                         <td><?php echo $row['jobtitle']; ?></td>
                         <td><a href="view.php?id=<?php echo $row['id_jobpost']; ?>"><i class="fa fa-arrow-circle-right"></i></a></td>
+                        <?php  if($result1->num_rows > 0){ ?>
+                          <td><button class="btn btn_success bg-green" >Applied </button></td>
+                    
+                          <?php }
+                          else
+                          {
+                          ?>
+                          <td><button class="btn btn_success bg-red" >Not Applied </button></td>
+                          <?php }
+                        
+                          ?>
+
+
                       </tr>
                       <?php
                        }

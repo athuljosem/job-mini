@@ -9,50 +9,39 @@ require_once("../dbcon.php");
 //If user clicked register button
 if(isset($_POST)) {
 
-	//Escape Special Characters In String First
-	$companyname = mysqli_real_escape_string($conn, $_POST['companyname']);
-	$contactno = mysqli_real_escape_string($conn, $_POST['contactno']);
-	$website = mysqli_real_escape_string($conn, $_POST['website']);
-	$email = mysqli_real_escape_string($conn, $_POST['email']);
-	$password = mysqli_real_escape_string($conn, $_POST['password']);
+	
+	 $sql = "SELECT * FROM job_post WHERE id_jobpost='$_GET[id]'";
+                $result = $conn->query($sql);
 
-	$country = mysqli_real_escape_string($conn, $_POST['country']);
-	$state = mysqli_real_escape_string($conn, $_POST['state']);
-	$city = mysqli_real_escape_string($conn, $_POST['city']);
-
-	$aboutme = mysqli_real_escape_string($conn, $_POST['aboutme']);
-	$name = mysqli_real_escape_string($conn, $_POST['name']);
-
-	//Encrypt Password
-	$password = base64_encode(strrev(md5($password)));
-
+                //If Job Post exists then display details of post
+                if($result->num_rows > 0) {
+                  $row = $result->fetch_assoc();
+                  $id_company=$row['id_company'];
+              }
+                  
+                
+	
 	
 		//sql new registration insert query
-		$sql = "INSERT INTO company(name, companyname, country, state, city, contactno, website, email, password, aboutme, logo) VALUES ('$name', '$companyname', '$country', '$state', '$city', '$contactno', '$website', '$email', '$password', '$aboutme', '$file')";
+		$sql = "INSERT INTO apply_job(id_jobpost, id_company, id_user) VALUES ('$_GET[id]', '$id_company', $_SESSION[userid])";
 
 		if($conn->query($sql)===TRUE) {
 
 			//If data inserted successfully then Set some session variables for easy reference and redirect to company login
-			$_SESSION['registerCompleted'] = true;
-			header("Location: companyprofile.php");
+			$_SESSION['jobapplysuccess'] = true;
+			header("Location: view_jobpost.php");
 			exit();
 
 		} else {
 			//If data failed to insert then show that error. Note: This condition should not come unless we as a developer make mistake or someone tries to hack their way in and mess up :D
 			echo "Error " . $sql . "<br>" . $conn->error;
 		}
-	} else {
-		//if email found in database then show email already exists error.
-		$_SESSION['registerError'] = true;
-		header("Location: companyprofile.php");
-		exit();
-	}
-
+	
 	//Close database connection. Not compulsory but good practice.
 	$conn->close();
 
 } else {
 	//redirect them back to register page if they didn't click register button
-	header("Location: companyprofile.php");
+	header("Location: view.php");
 	exit();
 }
