@@ -63,7 +63,7 @@
                         <td><?php echo $row['jobtitle']; ?></td>
                         <!-- <td><a href="view.php?id=<?php echo $row['id_jobpost']; ?>"><i class="fa fa-arrow-circle-right"></i></a></td> -->
                         <?php  if($result1->num_rows > 0){ ?>
-                          <td><button class="btn btn_success bg-green" >Applied </button></td>
+                          <td><a href="view.php?id=<?php echo $row['id_jobpost']; ?>"><button class="btn btn_success bg-green" >Applied </button></td>
                     
                           <?php }
                           else
