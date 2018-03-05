@@ -21,7 +21,7 @@ if(isset($_POST)) {
                   
                 
 	
-	
+	//FIX: The system should not allow to apply for a job that he is not qualified to.
 		//sql new registration insert query
 		$sql = "INSERT INTO apply_job(id_jobpost, id_company, id_user) VALUES ('$_GET[id]', '$id_company', $_SESSION[userid])";
 
@@ -29,7 +29,14 @@ if(isset($_POST)) {
 
 			//If data inserted successfully then Set some session variables for easy reference and redirect to company login
 			$_SESSION['jobapplysuccess'] = true;
+			if ($_SESSION['dashboard'] = 'true')
+			{
+			header("Location: dashboard.php");
+			}
+			else
+			{
 			header("Location: view_jobpost.php");
+			}
 			exit();
 
 		} else {
