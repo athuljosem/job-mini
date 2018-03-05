@@ -29,7 +29,7 @@ if(isset($_POST)) {
 
 			//If data inserted successfully then Set some session variables for easy reference and redirect to company login
 			$_SESSION['jobapplysuccess'] = true;
-			if ($_SESSION['dashboard'] = 'true')
+			if ($_SESSION['leftpanel'] = 'dashboard')
 			{
 			header("Location: dashboard.php");
 			}

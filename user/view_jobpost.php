@@ -48,7 +48,7 @@
                       </thead>
                       <tbody>
                         <?php
-                        $_SESSION['dashboard'] = 'false';
+                        $_SESSION['leftpanel'] = 'jobs';
                      $sql = "SELECT * FROM job_post ";
                       $result = $conn->query($sql);
 

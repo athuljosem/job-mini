@@ -31,9 +31,9 @@
                     <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                       <thead>
                         <tr>
-                          <th>job title</th>
-                          <th>view</th>
-                           <th>Status</th> 
+                          <th>Job Title</th>
+                          <th>Status</th>
+                           <!-- <th>Status</th>  -->
                           <!-- <th>Office</th>
                           <th>Age</th>
                           <th>Start date</th>
@@ -44,7 +44,8 @@
                       </thead>
                       <tbody>
                         <?php
-                        $_SESSION['dashboard'] = 'false';
+
+                       $_SESSION['leftpanel'] = 'appliedjobs';
                      $sql = "SELECT * FROM job_post ";
                       $result = $conn->query($sql);
 
@@ -59,9 +60,9 @@
                       ?>
                       <tr>
                         <td><?php echo $row['jobtitle']; ?></td>
-                        <td><a href="view.php?id=<?php echo $row['id_jobpost']; ?>"><i class="fa fa-arrow-circle-right"></i></a></td>
+                        <!-- <td><a href="view.php?id=<?php echo $row['id_jobpost']; ?>"><i class="fa fa-arrow-circle-right"></i></a></td> -->
                         <?php  if($result1->num_rows > 0){ ?>
-                          <td><button class="btn btn_success bg-green" >Applied </button></td>
+                          <td><a href="view.php?id=<?php echo $row['id_jobpost']; ?>"><button class="btn btn_success bg-green" >Applied </button></td>
                     
                           <?php }
                           else

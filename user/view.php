@@ -22,10 +22,16 @@
                 </div>
                 <div class="pull-right">
                   <?php
-if($_SESSION['dashboard'] == 'true')
+if($_SESSION['leftpanel'] == 'dashboard')
 {
   ?>
   <a href="dashboard.php" class="btn btn-default btn-lg btn-flat margin-top-20"><i class="fa fa-arrow-circle-left"></i> Back</a>
+  <?php
+}
+else if($_SESSION['leftpanel'] == 'appliedjobs')
+{
+  ?>
+  <a href="myapplication.php" class="btn btn-default btn-lg btn-flat margin-top-20"><i class="fa fa-arrow-circle-left"></i> Back</a>
   <?php
 }
 else

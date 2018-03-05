@@ -58,7 +58,7 @@
                         	$qualification=$row["qualification"];
                         }
                     }
-$_SESSION['dashboard'] = 'true';
+$_SESSION['leftpanel'] = 'dashboard';
 
                      $sql = "SELECT * FROM job_post WHERE qualification='$qualification' ";
                       $result = $conn->query($sql);
