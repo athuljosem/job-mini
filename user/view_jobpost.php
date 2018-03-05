@@ -30,13 +30,11 @@
           
                     <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                       <thead>
-<<<<<<< HEAD
+
                         <tr>
-                          <th>job title</th>
-                          <th>view</th>
-=======
+                          
                         <tr>Job Title</th>
->>>>>>> e0fe1dcae50afeee1ef49293e12541c8412d2f38
+
                           <th>Status</th>
                           <!-- <th>Position</th> 
                           <th>Office</th>
