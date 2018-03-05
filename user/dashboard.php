@@ -30,8 +30,8 @@
                     <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                       <thead>
                         <tr>
-                          <th>job title</th>
-                          <th>view</th>
+                          <th>Job Title</th>
+                          <th>Status</th>
                           <!-- <th>Position</th> 
                           <th>Office</th>
                           <th>Age</th>
@@ -70,15 +70,15 @@ $_SESSION['dashboard'] = 'true';
                       ?>
                       <tr>
                         <td><?php echo $row['jobtitle']; ?></td>
-                        <td><a href="view.php?id=<?php echo $row['id_jobpost']; ?>"><i class="fa fa-arrow-circle-right"></i></a></td>
+                        <!-- <td><a href="view.php?id=<?php echo $row['id_jobpost']; ?>"><i class="fa fa-arrow-circle-right"></i></a></td> -->
                         <?php  if($result1->num_rows > 0){ ?>
-                          <td><button class="btn btn_success bg-green" >Applied </button></td>
+                          <td><a href="view.php?id=<?php echo $row['id_jobpost']; ?>"><button class="btn btn_success bg-green" >Applied </button></td>
                     
                           <?php }
                           else
                           {
                           ?>
-                          <td><button class="btn btn_success bg-red" >Not Applied </button></td>
+                          <td><a href="view.php?id=<?php echo $row['id_jobpost']; ?>"><button class="btn btn_success bg-red" >Not Applied </button></td>
                           <?php }
                         
                           ?>
