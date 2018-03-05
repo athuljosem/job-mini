@@ -29,11 +29,12 @@
                     </p>
           
                     <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-                      <thead>
-
+                     <thead>
                         <tr>
-                          
-                        <tr>Job Title</th>
+
+
+                          <th>Job Title</th>
+
 
                           <th>Status</th>
                           <!-- <th>Position</th> 
