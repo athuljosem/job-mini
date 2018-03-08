@@ -251,7 +251,7 @@ require_once("../dbcon.php");?>
                               <i class="glyphicon glyphicon-briefcase yellow"></i>
                             </a>
                             <div class="media-body ">
-                              <a class="title" href="#"><strong>JOB POSTED</strong></a>
+                              <a class="title" href="view_jobpost.php"><strong>JOB POSTED</strong></a>
                              <h1><?php echo $total; ?></h1> 
                               
                             </div>
