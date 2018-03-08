@@ -11,12 +11,12 @@ if(isset($_SESSION['companyid']))
 }
 else
 {
-  header('Location: homepage.php');
+  header('Location: ../index.php.php');
 }?>
 <?php
 
 if(empty($_SESSION['companyid'])) {
-  header("Location: ../homepage.php");
+  header("Location: ../index.php");
   exit();
   
 }
@@ -52,6 +52,10 @@ require_once("../dbcon.php");?>
 
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
+    <!-- editor -->
+    <script src="../js/tinymce/tinymce.min.js"></script>
+
+  <script>tinymce.init({ selector:'#description', height: 200 }); </script>
   </head>
 
   <body class="nav-md">

@@ -1,4 +1,5 @@
 <?php include 'header.php' ?>
+<!-- page content -->
 <div class="right_col" role="main">
           <div class="">
 
@@ -246,4 +247,8 @@
             </div>
           </div>
         </div>
-        <!-- <?php include 'footer.php' ?> -->
+        <!-- page content -->
+
+
+        <!-- footer content -->
+        <?php include 'footer.php' ?>
