@@ -30,7 +30,7 @@
                               <i class="glyphicon glyphicon-briefcase yellow"></i>
                             </a>
                             <div class="media-body ">
-                              <a class="title" href="jobapps.php"><strong>JOB POSTED</strong></a>
+                              <a class="title" href="#"><strong>JOB POSTED</strong></a>
                              <h1><?php echo $total; ?></h1> 
                               
                             </div>
@@ -58,7 +58,7 @@
                               <i class="glyphicon glyphicon-briefcase yellow"></i>
                             </a>
                             <div class="media-body ">
-                              <a class="title" href="#"><span>JOB APPLIED</span></a>
+                              <a class="title" href="jobapplication.php"><span>JOB APPLIED</span></a>
                              <h1><?php echo $total1; ?></h1> 
                               
                             </div>
