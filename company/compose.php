@@ -242,7 +242,7 @@ require_once("../dbcon.php");?>
                    while($row = $result->fetch_assoc()) 
                         {
                 ?>
-                <option value="press"><?php echo "$row['jobtitle']"; ?></option>
+                <option value="press"><?php echo $row['jobtitle']; ?></option>
                             <?php 
                           }
                         }
