@@ -27,7 +27,7 @@
                   <div class="x_content">
                     <div class="row">
                       <div class="col-sm-3 mail_list_column">
-                        
+                        <button id="compose" class="btn btn-sm btn-success btn-block" type="button">COMPOSE</button>
                         <a data-toggle="tab" href="#menu45">
                           <div class="mail_list">
                             <div class="left">

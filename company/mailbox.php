@@ -21,13 +21,12 @@
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Notification Mails</h2>
-                    
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
                     <div class="row">
                       <div class="col-sm-3 mail_list_column">
-                        
+                        <a href="compose.php"><button id="compose" class="btn btn-sm btn-success btn-block" type="button">COMPOSE</button></a>
                         <a data-toggle="tab" href="#menu45">
                           <div class="mail_list">
                             <div class="left">
