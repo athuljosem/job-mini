@@ -25,12 +25,12 @@
                     }
 
                     ?>
-                    <li class="media event bg-green">
+                    <li class="media event bg-blue">
                             <a class="pull-left border-green profile_thumb">
                               <i class="glyphicon glyphicon-briefcase yellow"></i>
                             </a>
                             <div class="media-body ">
-                              <a class="title" href="#"><strong>JOB POSTED</strong></a>
+                              <a class="title"  href="#"><strong>JOB POSTED</strong></a>
                              <h1><?php echo $total; ?></h1> 
                               
                             </div>
@@ -55,7 +55,7 @@
                   ?>
                     <li class="media event bg-blue">
                             <a class="pull-left border-green profile_thumb">
-                              <i class="glyphicon glyphicon-briefcase yellow"></i>
+                              <i class="fa fa-users"></i>
                             </a>
                             <div class="media-body ">
                               <a class="title" href="jobapplication.php"><span>JOB APPLIED</span></a>
