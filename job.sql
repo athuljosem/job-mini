@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 05, 2018 at 09:31 AM
+-- Generation Time: Mar 17, 2018 at 03:13 PM
 -- Server version: 5.5.28
 -- PHP Version: 5.3.5
 
@@ -31,14 +31,15 @@ CREATE TABLE IF NOT EXISTS `apply_job` (
   `id_company` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   PRIMARY KEY (`id_applyjob`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `apply_job`
 --
 
 INSERT INTO `apply_job` (`id_applyjob`, `id_jobpost`, `id_company`, `id_user`) VALUES
-(7, 1, 1, 1);
+(7, 1, 1, 1),
+(9, 2, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -70,6 +71,31 @@ CREATE TABLE IF NOT EXISTS `company` (
 
 INSERT INTO `company` (`id_company`, `companyname`, `contactno`, `website`, `companytype`, `email`, `password`, `country`, `state`, `city`, `aboutme`, `logo`, `createdAt`) VALUES
 (1, 'google', '1234567890', 'www.google.com', NULL, 'google@gmail.com', '1234', 'india', 'kerala', 'ernakulam', 'well known company', NULL, '2018-02-22 23:13:59');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `company_mailbox`
+--
+
+CREATE TABLE IF NOT EXISTS `company_mailbox` (
+  `id_mail` int(11) NOT NULL AUTO_INCREMENT,
+  `id_company` int(11) NOT NULL,
+  `id_jobpost` int(11) NOT NULL,
+  `mail_title` varchar(500) NOT NULL,
+  `mail_content` varchar(1000) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_mail`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `company_mailbox`
+--
+
+INSERT INTO `company_mailbox` (`id_mail`, `id_company`, `id_jobpost`, `mail_title`, `mail_content`, `time`) VALUES
+(1, 1, 2, 'Test Title', 'Testing', '2018-03-17 15:04:26'),
+(2, 1, 2, 'AAA', '<p>abc</p>', '2018-03-17 15:39:11'),
+(3, 1, 1, 'test 2', '<p>test 2</p>', '2018-03-17 15:39:45');
 
 -- --------------------------------------------------------
 
