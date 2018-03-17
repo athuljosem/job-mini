@@ -1,5 +1,4 @@
 <?php include 'header.php' ?>
-<!-- page content -->
 <div class="right_col" role="main">
           <div class="">
 
@@ -22,17 +21,61 @@
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Notification Mails</h2>
+                    
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
                     <div class="row">
                       <div class="col-sm-3 mail_list_column">
-                        <a href="compose.php"><button id="compose" class="btn btn-sm btn-success btn-block" type="button">COMPOSE</button></a>
-                        <a data-toggle="tab" href="#menu45">
+                        <button id="compose" class="btn btn-sm btn-success btn-block" type="button">COMPOSE</button>
+                        <?php
+                        $sql = "SELECT DISTINCT id_jobpost FROM apply_job WHERE id_user=$_SESSION[userid] ";
+                      $result = $conn->query($sql);
+
+
+                      //If Job Post exists then display details of post
+                      if($result->num_rows > 0) 
+                      {
+                        while($row = $result->fetch_assoc()) 
+                        {
+                          $sql1 = "SELECT * FROM company_mailbox WHERE id_jobpost=$row[id_jobpost] ";
+
+                      $result1 = $conn->query($sql1);
+                         if($result1->num_rows > 0) 
+                      {
+                        while($row1 = $result1->fetch_assoc()) 
+                        {
+                          $sql2 = "SELECT * FROM company WHERE id_company=$row1[id_company]";
+                          $result2 = $conn->query($sql2);
+                          $row2 = $result2->fetch_assoc();
+?>
+<a data-toggle="tab" href="#<?php echo $row1['id_mail']; ?>">
                           <div class="mail_list">
                             <div class="left">
                               <i class="fa fa-circle"></i> 
                               <!-- <i class="fa fa-edit"></i> -->
+                            </div>
+                            <div class="right">
+                              <h3><?php echo $row2['email']; ?> <small><?php echo substr($row1['time'],5,11); ?> </small></h3>
+                              <p><?php echo $row1['mail_title']; ?></p>
+                            </div>
+                          </div>
+                        </a>
+
+
+
+<?php
+
+                        }
+                      }
+                        }
+                      }
+                        ?>
+                       <!--  <a data-toggle="tab" href="#menu45">
+                          <div class="mail_list">
+                            <div class="left">
+                              <i class="fa fa-circle"></i> 
+                              <i class="fa fa-edit"></i>
                             </div>
                             <div class="right">
                               <h3>Company Name <small>3.00 PM</small></h3>
@@ -50,14 +93,35 @@
                               <p>Mail Content 2</p>
                             </div>
                           </div>
-                        </a>
-
+                        </a> -->
+<button id="compose" href="" class="btn btn-sm btn-success btn-block" type="button">SEND MAIL</button>
                       </div>
                       <!-- /MAIL LIST -->
 
                       <!-- CONTENT MAIL -->
+
+
                       <div class="col-sm-9 mail_view tab-content">
-                        <div id="menu45" class="inbox-body tab-pane fade in active">
+                        <?php
+                        $sql = "SELECT * FROM user_mailbox WHERE id_company=$_SESSION[companyid] ";
+                      $result = $conn->query($sql);
+
+
+                      //If Job Post exists then display details of post
+                      if($result->num_rows > 0) 
+                      {
+                        while($row = $result->fetch_assoc()) 
+                        {
+                          $sql1 = "SELECT * FROM users WHERE user_id=$row1[id_user]";;
+
+                      $result1 = $conn->query($sql1);
+                         if($result1->num_rows > 0) 
+                      {
+                        while($row1 = $result1->fetch_assoc()) 
+                        {
+                          
+?>
+                        <div id="<?php echo $row1['id_mail']; ?>" class="inbox-body tab-pane fade in">
                           <div class="mail_heading row">
                             <div class="col-md-8">
                               <div class="btn-group">
@@ -65,17 +129,17 @@
                               </div>
                             </div>
                             <div class="col-md-4 text-right">
-                              <p class="date"> 8:02 PM 12 FEB 2014</p>
+                              <p class="date"> <?php echo substr($row1['time'],5,11); ?></p>
                             </div>
                             <div class="col-md-12">
-                              <h4> Mail Title</h4>
+                              <h4> <?php echo $row['mail_title']; ?></h4>
                             </div>
                           </div>
                           <div class="sender-info">
                             <div class="row">
                               <div class="col-md-12">
-                                <strong>Company Name</strong>
-                                <span>(companymail@gmail.com)</span> to
+                                <strong><?php echo $row1['fname']; ?> <?php echo $row1['lname']; ?></strong>
+                                <span>(<?php echo $row1['email']; ?>)</span> to
                                 <strong>me</strong>
                                 <!-- <a class="sender-dropdown"><i class="fa fa-chevron-down"></i></a> -->
                                 <br><br>
@@ -83,10 +147,10 @@
                             </div>
                           </div>
                           <div class="view-mail">
-                            <p>The Mail Content Comes Here</p>
+                            <p><?php echo $row1['mail_content']; ?><br><br></p>
                             
                           </div>
-                          <div class="attachment">
+                          <!-- <div class="attachment">
                             <p>
                               <span><i class="fa fa-paperclip"></i> 3 attachments — </span>
                               <a href="#">Download all attachments</a> |
@@ -142,101 +206,19 @@
                               </li>
 
                             </ul>
-                          </div>
+                          </div> -->
                           <div class="btn-group">
                             <button class="btn btn-sm btn-primary" type="button"><i class="fa fa-reply"></i> Reply</button>
                           </div>
                         </div>
-                        <div id="menu2" class="inbox-body tab-pane fade">
-                          <div class="mail_heading row">
-                            <div class="col-md-8">
-                              <div class="btn-group">
-                                <button class="btn btn-sm btn-primary" type="button"><i class="fa fa-reply"></i> Reply</button>
-                              </div>
-                            </div>
-                            <div class="col-md-4 text-right">
-                              <p class="date"> 8:02 PM 12 FEB 2014</p>
-                            </div>
-                            <div class="col-md-12">
-                              <h4> Mail  2</h4>
-                            </div>
-                          </div>
-                          <div class="sender-info">
-                            <div class="row">
-                              <div class="col-md-12">
-                                <strong>Company2</strong>
-                                <span>(companymail2@gmail.com)</span> to
-                                <strong>me</strong>
-                                <!-- <a class="sender-dropdown"><i class="fa fa-chevron-down"></i></a> -->
-                                <br><br>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="view-mail">
-                            <p>The Mail Content 2 Comes Here</p>
-                            
-                          </div>
-                          <div class="attachment">
-                            <p>
-                              <span><i class="fa fa-paperclip"></i> 3 attachments — </span>
-                              <a href="#">Download all attachments</a> |
-                              <a href="#">View all images</a>
-                            </p>
-                            <ul>
-                              <li>
-                                <a href="#" class="atch-thumb">
-                                  <img src="images/inbox.png" alt="img" />
-                                </a>
+                        <?php
 
-                                <div class="file-name">
-                                  image-name.jpg
-                                </div>
-                                <span>12KB</span>
-
-
-                                <div class="links">
-                                  <a href="#">View</a> -
-                                  <a href="#">Download</a>
-                                </div>
-                              </li>
-
-                              <li>
-                                <a href="#" class="atch-thumb">
-                                  <img src="images/inbox.png" alt="img" />
-                                </a>
-
-                                <div class="file-name">
-                                  img_name.jpg
-                                </div>
-                                <span>40KB</span>
-
-                                <div class="links">
-                                  <a href="#">View</a> -
-                                  <a href="#">Download</a>
-                                </div>
-                              </li>
-                              <li>
-                                <a href="#" class="atch-thumb">
-                                  <img src="images/inbox.png" alt="img" />
-                                </a>
-
-                                <div class="file-name">
-                                  img_name.jpg
-                                </div>
-                                <span>30KB</span>
-
-                                <div class="links">
-                                  <a href="#">View</a> -
-                                  <a href="#">Download</a>
-                                </div>
-                              </li>
-
-                            </ul>
-                          </div>
-                          <div class="btn-group">
-                            <button class="btn btn-sm btn-primary" type="button"><i class="fa fa-reply"></i> Reply</button>
-                          </div>
-                        </div>
+                        }
+                      }
+                        }
+                      }
+                        ?>
+                        
 
                       </div>
                       <!-- /CONTENT MAIL -->
@@ -247,8 +229,4 @@
             </div>
           </div>
         </div>
-        <!-- page content -->
-
-
-        <!-- footer content -->
         <?php include 'footer.php' ?>
