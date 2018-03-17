@@ -9,8 +9,8 @@
               <form method="post" action="addmail.php">
                 <div class="col-md-12 latest-job ">
                   <div class="form-group">
-                     <label for="heard">To:</label>
-                     <select id="to" class="form-control" required>
+                     <label for="heard">Applicants of:</label>
+                     <select id="to" name="to" class="form-control" required>
                             <option value="">Choose..</option>
                      <?php 
                      $sql= "SELECT * FROM job_post WHERE id_company='$_SESSION[companyid]'";
@@ -20,7 +20,7 @@
                    while($row = $result->fetch_assoc()) 
                         {
                 ?>
-                <option value="press"><?php echo $row['jobtitle']; ?></option>
+                <option value=<?php echo $row['id_jobpost']; ?>><?php echo $row['jobtitle']; ?></option>
                             <?php 
                           }
                         }
