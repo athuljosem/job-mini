@@ -28,6 +28,45 @@
                     <div class="row">
                       <div class="col-sm-3 mail_list_column">
                         <button id="compose" class="btn btn-sm btn-success btn-block" type="button">COMPOSE</button>
+                        <?php
+                        $sql = "SELECT id_jobpost FROM apply_job WHERE $_SESSION[userid] ";
+                      $result = $conn->query($sql);
+
+
+                      //If Job Post exists then display details of post
+                      if($result->num_rows > 0) 
+                      {
+                        while($row = $result->fetch_assoc()) 
+                        {
+                          $sql1 = "SELECT * FROM company_mailbox WHERE $row[id_jobpost] ";
+                      $result1 = $conn->query($sql);
+                         if($result1->num_rows > 0) 
+                      {
+                        while($row1 = $result1->fetch_assoc()) 
+                        {
+?>
+<a data-toggle="tab" href="#menu45">
+                          <div class="mail_list">
+                            <div class="left">
+                              <i class="fa fa-circle"></i> 
+                              <!-- <i class="fa fa-edit"></i> -->
+                            </div>
+                            <div class="right">
+                              <h3><?php echo $row1['mail_title']; ?> <small>3.00 PM</small></h3>
+                              <p>The Content of the mail comes here</p>
+                            </div>
+                          </div>
+                        </a>
+
+
+
+<?php
+
+                        }
+                      }
+                        }
+                      }
+                        ?>
                         <a data-toggle="tab" href="#menu45">
                           <div class="mail_list">
                             <div class="left">
