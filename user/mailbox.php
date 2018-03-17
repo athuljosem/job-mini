@@ -29,7 +29,7 @@
                       <div class="col-sm-3 mail_list_column">
                         <button id="compose" class="btn btn-sm btn-success btn-block" type="button">COMPOSE</button>
                         <?php
-                        $sql = "SELECT id_jobpost FROM apply_job WHERE $_SESSION[userid] ";
+                        $sql = "SELECT id_jobpost FROM apply_job WHERE id_user=$_SESSION[userid] ";
                       $result = $conn->query($sql);
 
 
@@ -38,8 +38,8 @@
                       {
                         while($row = $result->fetch_assoc()) 
                         {
-                          $sql1 = "SELECT * FROM company_mailbox WHERE $row[id_jobpost] ";
-                      $result1 = $conn->query($sql);
+                          $sql1 = "SELECT * FROM company_mailbox WHERE id_jobpost=$row[id_jobpost] ";
+                      $result1 = $conn->query($sql1);
                          if($result1->num_rows > 0) 
                       {
                         while($row1 = $result1->fetch_assoc()) 
