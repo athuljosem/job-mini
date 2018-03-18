@@ -82,9 +82,9 @@ require_once("../dbcon.php");?>
                   
                   <li><a><i class="fa fa-edit"></i> Edit/Delete <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="edit-candidate.php">Candidates</a></li>
+                      <li><a href="candidates.php">Candidates</a></li>
                       <li><a href="company.php">Company</a></li>
-                      <li><a href="active-jobpost.php">Jobpost</a></li>
+                      <li><a href="active-jobs.php">Jobpost</a></li>
                      
                     </ul>
                   

@@ -33,7 +33,7 @@
                         while($row = $result->fetch_assoc()) {
                       ?>
                       <tr>
-                        <td><?php echo $row['username']; ?></td>
+                        <td><?php echo $row['lname']; ?></td>
                         <td><?php echo $row['email']; ?></td>
                         <td><?php echo $row['contactno']; ?></td>
                         <td><?php echo $row['city']; ?></td>
@@ -47,18 +47,9 @@
                             echo "Registered";
                           }
                             ?>
-                            <!-- <a href="reject-company.php?id=<?php echo $row['id_company']; ?>">Reject</a> <a href="approve-company.php?id=<?php echo $row['id_company']; ?>">Approve</a> 
-                            <?php
-                          } else if ($row['active'] == '2') {
-                            ?>
-                              <a href="approve-company.php?id=<?php echo $row['id_company']; ?>">Reactivate</a>
-                            <?php
-                          } else if($row['active'] == '3') {
-                            echo "Rejected";
-                          }
-                        ?>            -->               
+                                       
                         </td>
-                        <td><a href="delete-company.php?id=<?php echo $row['id_company']; ?>">Delete</a></td>
+                        <td><a href="delete-company.php?id=<?php echo $row['user_id']; ?>">Delete</a></td>
                       </tr>  
                      <?php
                         }
