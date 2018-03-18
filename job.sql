@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 18, 2018 at 04:59 AM
+-- Generation Time: Mar 18, 2018 at 11:01 AM
 -- Server version: 5.7.20-log
 -- PHP Version: 5.6.31
 
@@ -21,6 +21,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `job`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE IF NOT EXISTS `admin` (
+  `id_admin` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_admin`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id_admin`, `username`, `password`) VALUES
+(1, 'admin', '123');
 
 -- --------------------------------------------------------
 
@@ -70,6 +91,7 @@ CREATE TABLE IF NOT EXISTS `company` (
   `aboutme` varchar(255) DEFAULT NULL,
   `logo` varchar(255) DEFAULT NULL,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `active` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_company`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
@@ -78,8 +100,8 @@ CREATE TABLE IF NOT EXISTS `company` (
 -- Dumping data for table `company`
 --
 
-INSERT INTO `company` (`id_company`, `companyname`, `contactno`, `website`, `companytype`, `email`, `password`, `country`, `state`, `city`, `aboutme`, `logo`, `createdAt`) VALUES
-(1, 'google', '1234567890', 'www.google.com', NULL, 'google@gmail.com', '1234', 'india', 'kerala', 'ernakulam', 'well known company', NULL, '2018-02-22 17:43:59');
+INSERT INTO `company` (`id_company`, `companyname`, `contactno`, `website`, `companytype`, `email`, `password`, `country`, `state`, `city`, `aboutme`, `logo`, `createdAt`, `active`) VALUES
+(1, 'google', '1234567890', 'www.google.com', NULL, 'google@gmail.com', '1234', 'india', 'kerala', 'ernakulam', 'well known company', NULL, '2018-02-22 17:43:59', 1);
 
 -- --------------------------------------------------------
 
@@ -94,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `company_mailbox` (
   `id_jobpost` int(11) NOT NULL,
   `mail_title` varchar(500) CHARACTER SET utf8 NOT NULL,
   `mail_content` varchar(1000) CHARACTER SET utf8 NOT NULL,
-  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_mail`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
@@ -102,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `company_mailbox` (
 -- Dumping data for table `company_mailbox`
 --
 
-INSERT INTO `company_mailbox` (`id_mail`, `id_company`, `id_jobpost`, `mail_title`, `mail_content`, `time`) VALUES
+INSERT INTO `company_mailbox` (`id_mail`, `id_company`, `id_jobpost`, `mail_title`, `mail_content`, `createdAt`) VALUES
 (1, 1, 2, 'Test Title', 'Testing', '2018-03-17 09:34:26'),
 (2, 1, 2, 'AAA', '<p>abc</p>', '2018-03-17 10:09:11'),
 (3, 1, 1, 'test 2', '<p>test 2</p>', '2018-03-17 10:09:45');
@@ -160,6 +182,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `age` varchar(255) DEFAULT NULL,
   `designation` varchar(255) DEFAULT NULL,
   `photo` varchar(255) DEFAULT NULL,
+  `active` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
@@ -168,10 +191,10 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `fname`, `lname`, `email`, `password`, `address`, `city`, `state`, `country`, `contactno`, `qualification`, `stream`, `passingyear`, `dob`, `age`, `designation`, `photo`) VALUES
-(1, 'arjun', 't k', 'arjuntk6258@gmail.com', '1234', 'Thazhathetharayil house\r\nkulayettikkara p.o\r\nkeechery', 'ernakulam', 'kerala', 'india', '9496633406', 'mca', 'computer application', '2018-04-03', '1994-09-13', '23', 'student', '5a9797a943ada.png'),
-(2, 'athul', 'jose', 'athuljosemenachery@gmail.com', '123', '', 'ernakulam', 'kerala', 'india', '', 'mca', '', '', '', '', '', '5a9c3bffb8a45.png'),
-(4, 'test', 'test', 'test@a.com', '1234', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `users` (`user_id`, `fname`, `lname`, `email`, `password`, `address`, `city`, `state`, `country`, `contactno`, `qualification`, `stream`, `passingyear`, `dob`, `age`, `designation`, `photo`, `active`) VALUES
+(1, 'arjun', 't k', 'arjuntk6258@gmail.com', '1234', 'Thazhathetharayil house\r\nkulayettikkara p.o\r\nkeechery', 'ernakulam', 'kerala', 'india', '9496633406', 'mca', 'computer application', '2018-04-03', '1994-09-13', '23', 'student', '5a9797a943ada.png', 1),
+(2, 'athul', 'jose', 'athuljosemenachery@gmail.com', '123', '', 'ernakulam', 'kerala', 'india', '', 'mca', '', '', '', '', '', '5a9c3bffb8a45.png', 1),
+(4, 'test', 'test', 'test@a.com', '1234', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -186,7 +209,8 @@ CREATE TABLE IF NOT EXISTS `user_mailbox` (
   `id_company` int(11) NOT NULL,
   `id_jobpost` int(11) NOT NULL,
   `mail_title` varchar(255) NOT NULL,
-  `mail_content` text NOT NULL
+  `mail_content` text NOT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 COMMIT;
 
