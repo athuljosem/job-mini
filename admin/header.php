@@ -1,34 +1,15 @@
 
 <?php session_start(); 
 
-if(isset($_SESSION['username'])) 
-{
 
- $user=$_SESSION['username'];
-  // $result=mysqli_query("$conn","select * from login");
- $email=$_SESSION['email'];
- //$email=$_SESSION['password'] 
-}
-else
-{
-  header('Location: ../index.php');
-}?>
-<?php
-
-if(empty($_SESSION['userid'])) {
-  header("Location: ../index.php");
+if(empty($_SESSION['id_admin'])) {
+  header("Location: index.php");
   exit();
   
 }
+
 require_once("../dbcon.php");?>
-<?php
 
-            $sql = "SELECT * FROM users WHERE user_id='$_SESSION[userid]'";;
-            $result = $conn->query($sql);
-
-            if($result->num_rows > 0) {
-              while($row = $result->fetch_assoc()) {
-            ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -56,18 +37,13 @@ require_once("../dbcon.php");?>
     <link href="../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
     <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-     <!-- Datatables -->
-
-<link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <!-- <link href="../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet"> -->
-    <!-- <link href="../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet"> -->
-    <link href="../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
-    <link href="../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
-    <!-- jQuery custom content scroller -->
-    <link href="../vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
 
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
+    <!-- editor -->
+    <script src="../js/tinymce/tinymce.min.js"></script>
+
+  <script>tinymce.init({ selector:'#description', height: 200 }); </script>
   </head>
 
   <body class="nav-md">
@@ -82,17 +58,7 @@ require_once("../dbcon.php");?>
             <div class="clearfix"></div>
 
             <!-- menu profile quick info -->
-            <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="../uploads/user/<?php echo $row['photo']; ?>" alt="..." class="img-circle profile_img">
-              </div>
-              <div class="profile_info">
-                <span>Welcome,</span>
-                <h2> <?php echo $user; ?></h2>
-
-              </div>
-               <h6> <?php echo $email; ?></h6>
-            </div>
+           
             <!-- /menu profile quick info -->
 
             <br />
@@ -104,16 +70,24 @@ require_once("../dbcon.php");?>
                 <ul class="nav side-menu">
                   <li><a href="dashboard.php"><i class="fa fa-home"></i> Dashboard </a>
                     
-                  <li><a href="profile.php"><i class="fa fa-edit"></i> Edit Profile </a>
-                    
+                    </li>
+                  <li><a><i class="fa fa-edit"></i> Approve <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="approve-candidate.php">Candidates</a></li>
+                      <li><a href="approve-company.php">Company</a></li>
+                      <li><a href="approve-jobpost.php">Jobpost</a></li>
+                     
+                    </ul>
                   </li>
-                  <li><a href="myapplication.php"><i class="fa fa-edit"></i> Applied Jobs </a>
-                   
-                  </li>
-                  <li><a href="view_jobpost.php"><i class="fa fa-desktop"></i> Jobs </a>
-                   
-                  </li>
-                  <li><a href="mailbox.php"><i class="fa fa-inbox"></i> Mailbox </a>
+                  <li><a><i class="fa fa-edit"></i> Edit/Delete <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="approve-candidate.php">Candidates</a></li>
+                      <li><a href="approve-company.php">Company</a></li>
+                      <li><a href="approve-jobpost.php">Jobpost</a></li>
+                     
+                    </ul>
+                  
+                  <li><a href="mailbox.php"><i class="fa fa-envelope"></i> Mailbox </a>
                    
                   </li>
                  
@@ -137,7 +111,7 @@ require_once("../dbcon.php");?>
               <a data-toggle="tooltip" data-placement="top" title="Lock">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="logout.php">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div> -->
@@ -156,7 +130,7 @@ require_once("../dbcon.php");?>
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="../uploads/user/<?php echo $row['photo']; ?>" alt=""><?php echo $user; ?>
+                    <!-- <img src="../uploads/user/<?php echo $row['photo']; ?>" alt="">--><?php echo "admin"; ?> 
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -172,73 +146,13 @@ require_once("../dbcon.php");?>
                   </ul>
                 </li>
 
-
-                 
-
                 <li role="presentation" class="dropdown">
                   <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                     <i class="fa fa-envelope-o"></i>
                     <span class="badge bg-green">6</span>
                   </a>
                   <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                    <?php
-                        $sql = "SELECT DISTINCT id_jobpost FROM apply_job WHERE id_user=$_SESSION[userid] ";
-                      $result = $conn->query($sql);
-
-
-                      //If Job Post exists then display details of post
-                      if($result->num_rows > 0) 
-                      {
-                        while($row = $result->fetch_assoc()) 
-                        {
-                          $sql1 = "SELECT * FROM company_mailbox WHERE id_jobpost=$row[id_jobpost] ORDER BY createdAt DESC";
-
-                      $result1 = $conn->query($sql1);
-                         if($result1->num_rows > 0) 
-                      {
-                        while($row1 = $result1->fetch_assoc()) 
-                        {
-                          $sql2 = "SELECT * FROM company WHERE id_company=$row1[id_company]";
-                          $result2 = $conn->query($sql2);
-                          $row2 = $result2->fetch_assoc();
-?>
                     <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span><?php echo $row2['companyname']; ?></span>
-                          
-                          
-
-
-
-                          <span class="time"><?php echo substr($row1['createdAt'],10,11); ?></span>
-                        </span>
-                        <span class="message">
-                          <?php echo $row1['mail_content']; ?>
-                        </span>
-                      </a>
-                    </li>
-                    <?php
-
-                        }
-                      }
-                        }
-                      }
-                        ?>
-                    <!-- <li> 
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li> 
                       <a>
                         <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
                         <span>
@@ -261,10 +175,34 @@ require_once("../dbcon.php");?>
                           Film festivals used to be do-or-die moments for movie makers. They were where...
                         </span>
                       </a>
-                    </li>-->
+                    </li>
+                    <li>
+                      <a>
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a>
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                    </li>
                     <li>
                       <div class="text-center">
-                        <a href="mailbox.php">
+                        <a>
                           <strong>See All Alerts</strong>
                           <i class="fa fa-angle-right"></i>
                         </a>
@@ -272,17 +210,9 @@ require_once("../dbcon.php");?>
                     </li>
                   </ul>
                 </li>
-
-
-
               </ul>
             </nav>
           </div>
         </div>
-        <!-- /top navigation
+        <!-- /top navigation -->
 
-        <?php
-}
-}
-?>
-          <!--pagecontet-->

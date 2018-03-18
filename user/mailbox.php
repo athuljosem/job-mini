@@ -32,13 +32,12 @@
                         $sql = "SELECT DISTINCT id_jobpost FROM apply_job WHERE id_user=$_SESSION[userid] ";
                       $result = $conn->query($sql);
 
-
                       //If Job Post exists then display details of post
                       if($result->num_rows > 0) 
                       {
                         while($row = $result->fetch_assoc()) 
                         {
-                          $sql1 = "SELECT * FROM company_mailbox WHERE id_jobpost=$row[id_jobpost] ";
+                          $sql1 = "SELECT * FROM company_mailbox WHERE id_jobpost=$row[id_jobpost] ORDER BY createdAt DESC";
 
                       $result1 = $conn->query($sql1);
                          if($result1->num_rows > 0) 
@@ -48,6 +47,7 @@
                           $sql2 = "SELECT * FROM company WHERE id_company=$row1[id_company]";
                           $result2 = $conn->query($sql2);
                           $row2 = $result2->fetch_assoc();
+
 
                           $sql3 = "SELECT * FROM job_post WHERE id_jobpost=$row[id_jobpost]";
                           $result3 = $conn->query($sql3);
@@ -60,7 +60,7 @@
                               <!-- <i class="fa fa-edit"></i> -->
                             </div>
                             <div class="right">
-                              <h3><?php echo $row2['email']; ?> <small><?php echo substr($row1['time'],5,11); ?> </small></h3>
+                              <h3><?php echo $row2['email']; ?> <small><?php echo substr($row1['createdAt'],5,11); ?> </small></h3>
                               <p><?php echo $row3['jobtitle']; ?></p>
                             </div>
                           </div>
@@ -135,7 +135,7 @@
                               </div>
                             </div>
                             <div class="col-md-4 text-right">
-                              <p class="date"> <?php echo substr($row1['time'],5,11); ?></p>
+                              <p class="date"> <?php echo substr($row1['createdAt'],5,11); ?></p>
                             </div>
                             <div class="col-md-12">
                               <h4> <?php echo $row1['mail_title']; ?></h4>
