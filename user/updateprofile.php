@@ -21,7 +21,7 @@ if(isset($_POST["submit"])) {
 
 
 	$sql = "SELECT email FROM users WHERE email = '$email'";
-    $result = $conn->query($sql);
+	$result = $conn->query($sql);
 	//if email not found then we can insert new data
 	if($result->num_rows == 0) {
 
@@ -39,7 +39,7 @@ if(isset($_POST["submit"])) {
 
 		//Setting a random non repeatable file name. Uniqid will create a unique name based on current timestamp. We are using this because no two files can be of same name as it will overwrite.
 		$file = uniqid() . "." . $imageFileType; 
-	  
+		
 		//This is where your files will be saved so in this case it will be uploads/image/newfilename
 		$filename = $folder_dir .$file;  
 
@@ -67,9 +67,9 @@ if(isset($_POST["submit"])) {
 			}
 		} else {
 				//File not copied to temp location error.
-				$_SESSION['uploadError'] = "Something Went Wrong. File Not Uploaded. Try Again.";
-				$uploadOk = false;
-			}
+			$_SESSION['uploadError'] = "Something Went Wrong. File Not Uploaded. Try Again.";
+			$uploadOk = false;
+		}
 
 		//If there is any error then redirect back.
 		if($uploadOk == false) {
@@ -77,7 +77,7 @@ if(isset($_POST["submit"])) {
 			exit();
 		}
 
-     }
+	}
 	//Update Query
 	$sql = "UPDATE users SET fname='$firstname', lname='$lastname', address='$address', city='$city', state='$state', contactno='$contactno', qualification='$qualification', stream='$stream', passingyear='$passingyear', dob='$dob', age='$age', designation='$designation',photo='$file' WHERE user_id='$_SESSION[userid]'";
 

@@ -19,7 +19,7 @@ if(isset($_POST["submit"])) {
 	$companyid = mysqli_real_escape_string($conn, $_POST['to']);
 
 	//Update Query
-	 $sql = "INSERT INTO user_mailbox(id_user,id_company,mail_title,mail_content) VALUES ( '$_SESSION[userid]','$companyid','$subject', '$description')";
+	$sql = "INSERT INTO user_mailbox(id_user,id_company,mail_title,mail_content) VALUES ( '$_SESSION[userid]','$companyid','$subject', '$description')";
 
 	if($conn->query($sql) === TRUE) {
 		$session['mailsuccess'] = true;

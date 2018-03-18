@@ -14,7 +14,7 @@ if(isset($_POST["submit"])) {
 	$qualification = mysqli_real_escape_string($conn, $_POST['qualification']);
 
 	//Update Query
-	 $sql = "INSERT INTO job_post(id_company,jobtitle,description,minimumsalary,maximumsalary,experience,qualification) VALUES ( '$_SESSION[companyid]', '$jobtitle', '$description', '$minimumsalary', '$maximumsalary', '$experience', '$qualification')";
+	$sql = "INSERT INTO job_post(id_company,jobtitle,description,minimumsalary,maximumsalary,experience,qualification) VALUES ( '$_SESSION[companyid]', '$jobtitle', '$description', '$minimumsalary', '$maximumsalary', '$experience', '$qualification')";
 
 	if($conn->query($sql) === TRUE) {
 		$session['jobpostsuccess'] = true;

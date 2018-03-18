@@ -47,7 +47,7 @@ if(isset($_POST)) {
 
 		//Setting a random non repeatable file name. Uniqid will create a unique name based on current timestamp. We are using this because no two files can be of same name as it will overwrite.
 		$file = uniqid() . "." . $imageFileType; 
-	  
+		
 		//This is where your files will be saved so in this case it will be uploads/image/newfilename
 		$filename = $folder_dir .$file;  
 
@@ -75,9 +75,9 @@ if(isset($_POST)) {
 			}
 		} else {
 				//File not copied to temp location error.
-				$_SESSION['uploadError'] = "Something Went Wrong. File Not Uploaded. Try Again.";
-				$uploadOk = false;
-			}
+			$_SESSION['uploadError'] = "Something Went Wrong. File Not Uploaded. Try Again.";
+			$uploadOk = false;
+		}
 
 		//If there is any error then redirect back.
 		if($uploadOk == false) {
