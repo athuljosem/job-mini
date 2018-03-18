@@ -3,15 +3,15 @@
         <div class="right_col" role="main">
          
           <h3>Overview</h3>
-            <div class="alert alert-info alert-dismissible " >
+            <!-- <div class="alert alert-info alert-dismissible " >
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
                 <i class="icon fa fa-info"></i> In this dashboard you are able to change your account settings, post and manage your jobs. Got a question? Do not hesitate to drop us a mail.
-            </div>
+            </div> -->
              
             <div class="row">
               <div class="col-md-6">
                 <div class="info-box bg-c-yellow">
-                  <span class="info-box-icon bg-red"><i class="ion ion-ios-people-outline"></i></span>
+                  <!-- <span class="info-box-icon bg-red"><i class="ion ion-ios-people-outline"></i></span> -->
                   <div class="info-box-content">
                     
                     <?php
@@ -40,7 +40,7 @@
               </div>
               <div class="col-md-6">
                 <div class="info-box bg-c-yellow">
-                  <span class="info-box-icon bg-green"><i class="ion ion-ios-browsers"></i></span>
+                  <!-- <span class="info-box-icon bg-green"><i class="ion ion-ios-browsers"></i></span> -->
                   <div class="info-box-content">
                     
                     <?php
