@@ -27,7 +27,7 @@
                   <div class="x_content">
                     <div class="row">
                       <div class="col-sm-3 mail_list_column">
-                        <button id="compose" class="btn btn-sm btn-success btn-block" type="button">COMPOSE</button>
+                        <a href="compose.php"><button id="compose" class="btn btn-sm btn-success btn-block" type="button">COMPOSE</button></a>
                         <?php
                         $sql = "SELECT DISTINCT id_jobpost FROM apply_job WHERE id_user=$_SESSION[userid] ";
                       $result = $conn->query($sql);

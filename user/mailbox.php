@@ -48,6 +48,10 @@
                           $sql2 = "SELECT * FROM company WHERE id_company=$row1[id_company]";
                           $result2 = $conn->query($sql2);
                           $row2 = $result2->fetch_assoc();
+
+                          $sql3 = "SELECT * FROM job_post WHERE id_jobpost=$row[id_jobpost]";
+                          $result3 = $conn->query($sql3);
+                          $row3 = $result3->fetch_assoc();
 ?>
 <a data-toggle="tab" href="#<?php echo $row1['id_mail']; ?>">
                           <div class="mail_list">
@@ -57,7 +61,7 @@
                             </div>
                             <div class="right">
                               <h3><?php echo $row2['email']; ?> <small><?php echo substr($row1['time'],5,11); ?> </small></h3>
-                              <p><?php echo $row1['mail_title']; ?></p>
+                              <p><?php echo $row3['jobtitle']; ?></p>
                             </div>
                           </div>
                         </a>
