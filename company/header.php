@@ -86,7 +86,7 @@ require_once("../dbcon.php");?>
                 <li><a href="companyprofile.php"><i class="fa fa-edit"></i> My company </a>
 
                 </li>
-                <li><a href="createjob.php"><i class="fa fa-edit"></i> Create JOb Post </a>
+                <li><a href="createjob.php"><i class="fa fa-edit"></i> Create Job Post </a>
                  
                 </li>
                 <li><a href="view_jobpost.php"><i class="fa fa-desktop"></i> My Jobs Posts </a>
