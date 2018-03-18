@@ -29,7 +29,7 @@
                       <div class="col-sm-3 mail_list_column">
                         <a href="compose.php"><button id="compose" class="btn btn-sm btn-success btn-block" type="button">COMPOSE</button></a>
                         <?php
-                        $sql = "SELECT DISTINCT id_jobpost FROM apply_job WHERE id_user=$_SESSION[userid] ";
+                        $sql = "SELECT DISTINCT id_jobpost FROM apply_job WHERE id_company=$_SESSION[companyid]";
                       $result = $conn->query($sql);
 
 
@@ -38,7 +38,7 @@
                       {
                         while($row = $result->fetch_assoc()) 
                         {
-                          $sql1 = "SELECT * FROM company_mailbox WHERE id_jobpost=$row[id_jobpost] ";
+                          $sql1 = "SELECT * FROM user_mailbox WHERE id_jobpost=$row[id_jobpost] ORDER BY createdAt DESC ";
 
                       $result1 = $conn->query($sql1);
                          if($result1->num_rows > 0) 
