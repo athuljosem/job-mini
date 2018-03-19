@@ -45,9 +45,7 @@
                           if($row['active'] == '1') {
                             echo "Activated";
                           } else if($row['active'] == '0') {
-                            ?>
-                            <a href="reject-company.php?id=<?php echo $row['id_company']; ?>">Reject</a> <a href="approve-company.php?id=<?php echo $row['id_company']; ?>">Approve</a>
-                            <?php
+                            echo "Not Activated";
                           } else if ($row['active'] == '2') {
                             ?>
                               <a href="approve-company.php?id=<?php echo $row['id_company']; ?>">Reactivate</a>
@@ -57,7 +55,7 @@
                           }
                         ?>                          
                         </td>
-                        <td><a href="delete-company.php?id=<?php echo $row['id_company']; ?>">Delete</a></td>
+                        <td><a href="delete-company.php?id=<?php echo $row['id_company']; ?>"><i class="fa fa-trash"></i></a></td>
                       </tr>  
                      <?php
                         }

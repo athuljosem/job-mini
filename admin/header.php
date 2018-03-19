@@ -71,7 +71,7 @@ require_once("../dbcon.php");?>
                   <li><a href="dashboard.php"><i class="fa fa-home"></i> Dashboard </a>
                     
                     </li>
-                  <li><a><i class="fa fa-edit"></i> Approve <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-check-square"></i> Approve <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="approve-candidate.php">Candidates</a></li>
                       <li><a href="approve-company.php">Company</a></li>

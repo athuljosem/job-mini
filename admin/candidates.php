@@ -23,6 +23,7 @@
                       <th>City</th>
                       <th>State</th>
                       <th>Country</th>
+                       <th>Status</th>
                       <th>Delete</th>
                     </thead>
                     <tbody>
@@ -33,7 +34,7 @@
                         while($row = $result->fetch_assoc()) {
                       ?>
                       <tr>
-                        <td><?php echo $row['lname']; ?></td>
+                        <td><?php echo $row['fname']; ?></td>
                         <td><?php echo $row['email']; ?></td>
                         <td><?php echo $row['contactno']; ?></td>
                         <td><?php echo $row['city']; ?></td>
@@ -44,12 +45,12 @@
                           if($row['active'] == '1') {
                             echo "Registered";
                           } else if($row['active'] == '0') {
-                            echo "Registered";
+                            echo "Not Registered";
                           }
                             ?>
                                        
                         </td>
-                        <td><a href="delete-company.php?id=<?php echo $row['user_id']; ?>">Delete</a></td>
+                        <td><a href="delete-company.php?id=<?php echo $row['user_id']; ?>"><i class="fa fa-trash"></i> </a></td>
                       </tr>  
                      <?php
                         }
