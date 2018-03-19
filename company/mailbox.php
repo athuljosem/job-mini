@@ -84,7 +84,7 @@
                             </div>
                           </div>
                         </a> -->
-                        <button id="compose" href="" class="btn btn-sm btn-success btn-block" type="button">SEND MAIL</button>
+                        <!-- <button id="compose" href="" class="btn btn-sm btn-success btn-block" type="button">SEND MAIL</button> -->
                       </div>
                       <!-- /MAIL LIST -->
 

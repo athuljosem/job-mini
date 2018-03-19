@@ -197,7 +197,7 @@ if($result->num_rows > 0) {
                       {
                         while($row = $result->fetch_assoc()) 
                         {
-                          $sql1 = "SELECT * FROM company_mailbox WHERE id_jobpost=$row[id_jobpost] ORDER BY createdAt DESC";
+                          $sql1 = "SELECT * FROM company_mailbox WHERE id_jobpost=$row[id_jobpost] ORDER BY createdAt DESC LIMIT 5";
                           
                           $_SESSION['notification_count'] = NULL;
                           $result1 = $conn->query($sql1);
@@ -215,13 +215,13 @@ if($result->num_rows > 0) {
                                 <a>
                                   <!-- <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span> -->
                                   <span>
-                                    <span><b><?php echo $row2['companyname']; ?></b></span>
+                                    <span><a href="mailbox.php"><b><?php echo $row2['companyname']; ?></b></a></span>
 
 
 
 
 
-                                    <span class="time"><?php echo substr($row1['createdAt'],10,11); ?></span>
+                                    <span class="time"><?php echo substr($row1['createdAt'],10,6); ?></span>
                                   </span>
                                   <span class="message">
                                     <?php echo $row1['mail_title']; ?>
