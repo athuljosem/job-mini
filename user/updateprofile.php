@@ -72,10 +72,10 @@ if(isset($_POST["submit"])) {
 		}
 
 		//If there is any error then redirect back.
-		if($uploadOk == false) {
-			header("Location: ../register-company.php");
-			exit();
-		}
+		// if($uploadOk == false) {
+		// 	header("Location: ../register-company.php");
+		// 	exit();
+		// }
 
 	}
 	//Update Query

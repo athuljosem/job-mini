@@ -37,14 +37,14 @@ if($result->num_rows > 0) {
                       <img class="img-responsive avatar-view" src= "../uploads/user/<?php echo $row['photo']; ?>" alt="Avatar" title="Change the avatar">
                     </div>
                   </div>
-                  <h3><?php echo $row['fname']; ?> <?php echo $row['lname']; ?></h3>
+                  <h3><?php echo ucwords($row['fname']); ?> <?php echo ucwords($row['lname']); ?></h3>
 
                   <ul class="list-unstyled user_data">
-                    <li><i class="fa fa-map-marker user-profile-icon"></i> <?php echo $row['city']; ?>, <?php echo $row['state']; ?>, <?php echo $row['country']; ?>
+                    <li><i class="fa fa-map-marker user-profile-icon"></i> <?php echo ucwords($row['city']); ?>, <?php echo ucwords($row['state']); ?>, <?php echo ucwords($row['country']); ?>
                     </li>
 
                     <li>
-                      <i class="fa fa-briefcase user-profile-icon"></i> <?php echo $row['designation']; ?>
+                      <i class="fa fa-briefcase user-profile-icon"></i> <?php echo ucwords($row['designation']); ?>
                     </li>
 
                     <li class="m-top-xs">
@@ -154,7 +154,7 @@ if($result->num_rows > 0) {
                             </div>
                             <div class="form-group">
                               <label>image</label>
-                              <input type="file" name="image" id="image" class="form-control input-lg" >
+                              <input type="file" name="image" id="image" class=" input" >
                             </div>
                             <div class="text-center">
                               <input type="submit" name="submit" class="btn btn-success" value="update">
