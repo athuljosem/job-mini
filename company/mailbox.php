@@ -9,7 +9,7 @@
 
       <div class="title_right">
         <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-          
+
         </div>
       </div>
     </div>
@@ -29,45 +29,35 @@
               <div class="col-sm-3 mail_list_column">
                 <a href="compose.php"><button id="compose" class="btn btn-sm btn-success btn-block" type="button">COMPOSE</button></a>
                 <?php
-                $sql = "SELECT DISTINCT id_jobpost FROM apply_job WHERE id_company=$_SESSION[companyid]";
-                $result = $conn->query($sql);
+                
+                $sql1 = "SELECT * FROM user_mailbox WHERE id_company=$_SESSION[companyid] ORDER BY createdAt DESC ";
 
-
-                      //If Job Post exists then display details of post
-                if($result->num_rows > 0) 
+                $result1 = $conn->query($sql1);
+                if($result1->num_rows > 0) 
                 {
-                  while($row = $result->fetch_assoc()) 
+                  while($row1 = $result1->fetch_assoc()) 
                   {
-                    $sql1 = "SELECT * FROM user_mailbox WHERE id_jobpost=$row[id_jobpost] ORDER BY createdAt DESC ";
-
-                    $result1 = $conn->query($sql1);
-                    if($result1->num_rows > 0) 
-                    {
-                      while($row1 = $result1->fetch_assoc()) 
-                      {
-                        $sql2 = "SELECT * FROM company WHERE id_company=$row1[id_company]";
-                        $result2 = $conn->query($sql2);
-                        $row2 = $result2->fetch_assoc();
-                        ?>
-                        <a data-toggle="tab" href="#<?php echo $row1['id_mail']; ?>">
-                          <div class="mail_list">
-                            <div class="left">
-                              <i class="fa fa-circle"></i> 
-                              <!-- <i class="fa fa-edit"></i> -->
-                            </div>
-                            <div class="right">
-                              <h3><?php echo $row2['email']; ?> <small><?php echo substr($row1['time'],5,11); ?> </small></h3>
-                              <p><?php echo $row1['mail_title']; ?></p>
-                            </div>
-                          </div>
-                        </a>
+                    $sql2 = "SELECT * FROM users WHERE user_id=$row1[id_user]";
+                    $result2 = $conn->query($sql2);
+                    $row2 = $result2->fetch_assoc();
+                    ?>
+                    <a data-toggle="tab" href="#<?php echo $row1['id_usermail']; ?>">
+                      <div class="mail_list">
+                        <div class="left">
+                          <i class="fa fa-circle"></i> 
+                          <!-- <i class="fa fa-edit"></i> -->
+                        </div>
+                        <div class="right">
+                          <h3><?php echo $row2['email']; ?> <small><?php echo substr($row1['createdAt'],5,11); ?> </small></h3>
+                          <p><?php echo $row1['mail_title']; ?></p>
+                        </div>
+                      </div>
+                    </a>
 
 
 
-                        <?php
+                    <?php
 
-                      }
-                    }
                   }
                 }
                 ?>
@@ -112,16 +102,16 @@
                         {
                           while($row = $result->fetch_assoc()) 
                           {
-                            $sql1 = "SELECT * FROM users WHERE user_id=$row1[id_user]";;
+                            $sql1 = "SELECT * FROM users WHERE user_id=$row[id_user]";;
 
                             $result1 = $conn->query($sql1);
                             if($result1->num_rows > 0) 
                             {
                               while($row1 = $result1->fetch_assoc()) 
                               {
-                                
+
                                 ?>
-                                <div id="<?php echo $row1['id_mail']; ?>" class="inbox-body tab-pane fade in">
+                                <div id="<?php echo $row['id_usermail']; ?>" class="inbox-body tab-pane fade in">
                                   <div class="mail_heading row">
                                     <div class="col-md-8">
                                       <div class="btn-group">
@@ -129,7 +119,7 @@
                                       </div>
                                     </div>
                                     <div class="col-md-4 text-right">
-                                      <p class="date"> <?php echo substr($row1['time'],5,11); ?></p>
+                                      <p class="date"> <?php echo substr($row['createdAt'],5,11); ?></p>
                                     </div>
                                     <div class="col-md-12">
                                       <h4> <?php echo $row['mail_title']; ?></h4>
@@ -147,7 +137,7 @@
                                     </div>
                                   </div>
                                   <div class="view-mail">
-                                    <p><?php echo $row1['mail_content']; ?><br><br></p>
+                                    <p><?php echo $row['mail_content']; ?><br><br></p>
                                     
                                   </div>
                           <!-- <div class="attachment">
