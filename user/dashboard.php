@@ -8,7 +8,7 @@
       
       <div class="clearfix"></div>
     </div>
-    
+    <div class="row">
     
     <?php
 
@@ -46,7 +46,7 @@
          $row3=$result3->fetch_assoc();
          ?>
 
-         <div class="col-md-4 col-sm-4 col-xs-12 profile_details">
+         <div class="col-md-6 col-sm-4 col-xs-12 profile_details">
           <div class="well profile_view">
             <div class="col-sm-12">
               <h1 class="brief"><i><?php echo $row3['companyname']; ?></i></h1>
@@ -90,13 +90,13 @@
               </div>
             </div>
           </div>
-
           
           <?php
         }
       }
     }
     ?>
+  </div>
   </div>
 </div>
 </div>
