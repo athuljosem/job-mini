@@ -53,7 +53,7 @@
                             ?>
                             <tr>
                               <td><?php echo $row['jobtitle']; ?></td>
-                              <td><a href="delete.php?id=<?php echo $row['id_jobpost']; ?>"><i class="fa fa-trash"></i></a></td>
+                              <td><a href="delete-jobpost.php?id=<?php echo $row['id_jobpost']; ?>"><i class="fa fa-trash"></i></a></td>
                               <td><a href="view.php?id=<?php echo $row['id_jobpost']; ?>"><i class="fa fa-arrow-circle-right"></i></a></td>
                             </tr>
                             <?php
