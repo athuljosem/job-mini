@@ -175,7 +175,7 @@ if($result->num_rows > 0) {
                 <li role="presentation" class="dropdown">
                   <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                     <i class="fa fa-envelope-o"></i>
-                    
+                    <?php $_SESSION['notification_count']=0;?>
                     <?php
                     if($_SESSION['notification_count']>=1) 
                       {?>
