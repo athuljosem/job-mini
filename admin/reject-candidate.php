@@ -13,7 +13,7 @@ require_once("../dbcon.php");
 if(isset($_GET)) {
 
 	//Delete Company using id and redirect
-	$sql = "DELETE FROM company WHERE id_company='$_GET[id]'";
+	$sql = "UPDATE users SET active='3' WHERE user_id='$_GET[id]'";
 	if($conn->query($sql)) {
 		header("Location: dashboard.php");
 		exit();
