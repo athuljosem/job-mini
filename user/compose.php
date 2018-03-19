@@ -9,7 +9,7 @@
     <form method="post" action="addmail.php">
       <div class="col-md-12 latest-job ">
         <div class="form-group">
-         <label for="heard">Applicants of:</label>
+         <label for="heard">Company name:</label>
          <select id="to" name="to" class="form-control" required>
           <option value="">Choose..</option>
           <?php 
