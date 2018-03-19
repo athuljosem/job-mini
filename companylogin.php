@@ -40,7 +40,7 @@
         <div class="animate form login_form">
         
           <section class="login_content">
-            <form role="form" method="post" action="companycheck.php"?flag=1234321>
+            <form role="form" method="post" action="companycheck.php">
 
               <h1>Login Form</h1>
               
