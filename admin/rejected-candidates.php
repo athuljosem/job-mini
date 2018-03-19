@@ -28,7 +28,7 @@
                     </thead>
                     <tbody>
                       <?php
-                      $sql = "SELECT * FROM users WHERE active='0'" ;
+                      $sql = "SELECT * FROM users";
                       $result = $conn->query($sql);
                       if($result->num_rows > 0) {
                         while($row = $result->fetch_assoc()) {
@@ -41,20 +41,14 @@
                         <td><?php echo $row['state']; ?></td>
                         <td><?php echo $row['country']; ?></td>
                         <td>
-                        <?php
-                          if($row['active'] == '0') {
+                       <?php
+                          if($row['active'] == '3') {
                            
                             ?>
-                            <a class="btn btn-default bg-red" href="reject-candidate.php?id=<?php echo $row['user_id']; ?>">Reject</a> <a class="btn btn-default bg-green" href="add-candidate.php?id=<?php echo $row['user_id']; ?>">Approve</a>
+                             <a class="btn btn-default bg-green" href="add-candidates.php?id=<?php echo $row['user_id']; ?>">Approve</a>
                             <?php
-                          } else if ($row['active'] == '2') {
-                            ?>
-                              <a href="approve-candidate.php?id=<?php echo $row['user_id']; ?>">Reactivate</a>
-                            <?php
-                          } else if($row['active'] == '3') {
-                            echo "Rejected";
-                          }
-                        ?>       
+                          } 
+                        ?>           
                         </td>
                         <td><a href="delete-company.php?id=<?php echo $row['user_id']; ?>"><i class="fa fa-trash"></i> </a></td>
                       </tr>  

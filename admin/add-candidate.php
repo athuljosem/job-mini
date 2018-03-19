@@ -15,7 +15,7 @@ if(isset($_GET)) {
 	//Update user using id and redirect
 	$sql = "UPDATE users SET active='1' WHERE user_id='$_GET[id]'";
 	if($conn->query($sql)) {
-		header("Location: company.php");
+		header("Location: dashboard.php");
 		exit();
 	} else {
 		echo "Error";

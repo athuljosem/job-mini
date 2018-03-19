@@ -87,6 +87,15 @@ require_once("../dbcon.php");?>
                       <li><a href="active-jobs.php">Jobpost</a></li>
                      
                     </ul>
+                  </li>
+                  <li><a><i class="fa fa-check-square"></i> Rejected <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="rejected-candidate.php">Candidates</a></li>
+                      <li><a href="rejected-company.php">Company</a></li>
+                      <li><a href="rejected-jobpost.php">Jobpost</a></li>
+                     
+                    </ul>
+                  </li>
                   
                   <li><a href="mailbox.php"><i class="fa fa-envelope"></i> Mailbox </a>
                    

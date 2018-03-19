@@ -16,7 +16,7 @@ if(isset($_GET)) {
 		$sql1 = "DELETE FROM apply_job_post WHERE id_jobpost='$_GET[id]'";
 		if($conn->query($sql1)) {
 		}
-		header("Location: active-jobs.php");
+		header("Location: dashboard.php");
 		exit();
 	} else {
 		echo "Error";

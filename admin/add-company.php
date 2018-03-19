@@ -15,7 +15,7 @@ if(isset($_GET)) {
 	//Delete Company using id and redirect
 	$sql = "UPDATE company SET active='1' WHERE id_company='$_GET[id]'";
 	if($conn->query($sql)) {
-		header("Location: company.php");
+		header("Location: dashboard.php");
 		exit();
 	} else {
 		echo "Error";
