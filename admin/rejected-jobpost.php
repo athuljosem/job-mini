@@ -16,47 +16,47 @@
                   <div class="x_content">
                     
                     <table id="datatable" class="table table-striped table-bordered">
+                      <table id="datatable" class="table table-striped table-bordered">
                       <thead>
+                      <th>Job Name</th>
                       <th>Company Name</th>
-                      <th>Email</th>
-                      <th>Phone</th>
-                      <th>City</th>
-                      <th>State</th>
-                      <th>Country</th>
+                      <th>Date Created</th>
+                      <th>View</th>
                       <th>Status</th>
                       <th>Delete</th>
                     </thead>
                     <tbody>
                       <?php
-                      $sql = "SELECT * FROM company WHERE active ='3'";
+                      $sql = "SELECT job_post.*, company.companyname FROM job_post INNER JOIN company ON job_post.id_company=company.id_company WHERE job_post.active='3'";
                       $result = $conn->query($sql);
                       if($result->num_rows > 0) {
+                        $i = 0;
                         while($row = $result->fetch_assoc()) {
                       ?>
                       <tr>
+                        <td><?php echo $row['jobtitle']; ?></td>
                         <td><?php echo $row['companyname']; ?></td>
-                        <td><?php echo $row['email']; ?></td>
-                        <td><?php echo $row['contactno']; ?></td>
-                        <td><?php echo $row['city']; ?></td>
-                        <td><?php echo $row['state']; ?></td>
-                        <td><?php echo $row['country']; ?></td>
+                        <td><?php echo date("d-M-Y", strtotime($row['createdAt'])); ?></td>
+                        <td><a href="view-jobpost.php?id=<?php echo $row['id_jobpost']; ?>"><i class="fa fa-arrow-right"></i></a></td>
                         <td>
-                        <?php
+                          <?php
                           if($row['active'] == '3') {
                            
                             ?>
                              <a class="btn btn-default bg-green" href="add-jobpost.php?id=<?php echo $row['id_jobpost']; ?>">Approve</a>
                             <?php
                           } 
-                        ?>                          
+                        ?>    
+                          
                         </td>
-                        <td><a href="delete-jobpost.php?id=<?php echo $row['id_jobpost']; ?>"><i class="fa fa-trash"></i></a></td>
+                        <td><a href="delete-job-post.php?id=<?php echo $row['id_jobpost']; ?>"><i class="fa fa-trash"></i></a></td>
+
                       </tr>  
-                     <?php
+                            <?php
                         }
                       }
                     ?>
-                    </tbody>                    
+                    </tbody>                       
                   </table>
                     
                     
