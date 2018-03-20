@@ -29,6 +29,7 @@
               <div class="col-sm-3 mail_list_column">
                 <a href="compose.php"><button id="compose"  class="btn btn-sm btn-success btn-block" type="button">COMPOSE</button></a>
                 <?php
+                $mailuser=$_SESSION['userid'];
                 $sql = "SELECT DISTINCT id_jobpost FROM apply_job WHERE id_user=$_SESSION[userid] ";
                 $result = $conn->query($sql);
 
@@ -37,7 +38,9 @@
                 {
                   while($row = $result->fetch_assoc()) 
                   {
-                    $sql1 = "SELECT * FROM company_mailbox WHERE id_jobpost=$row[id_jobpost] ORDER BY createdAt DESC";
+                    $sql1 = "SELECT * FROM company_mailbox WHERE id_jobpost=$row[id_jobpost] OR id_user=$mailuser ORDER BY createdAt DESC";
+                    $mailuser=-1;
+
 
                     $result1 = $conn->query($sql1);
                     if($result1->num_rows > 0) 
@@ -107,6 +110,7 @@
 
                       <div class="col-sm-9 mail_view tab-content">
                         <?php
+                        $mailuser=$_SESSION['userid'];
                         $sql = "SELECT id_jobpost FROM apply_job WHERE id_user=$_SESSION[userid] ";
                         $result = $conn->query($sql);
 
@@ -116,46 +120,47 @@
                         {
                           while($row = $result->fetch_assoc()) 
                           {
-                            $sql1 = "SELECT * FROM company_mailbox WHERE id_jobpost=$row[id_jobpost] ";
-
-                            $result1 = $conn->query($sql1);
-                            if($result1->num_rows > 0) 
+                           $sql1 = "SELECT * FROM company_mailbox WHERE id_jobpost=$row[id_jobpost] OR id_user=$mailuser";
+                           $mailuser=-1;
+                           
+                           $result1 = $conn->query($sql1);
+                           if($result1->num_rows > 0) 
+                           {
+                            while($row1 = $result1->fetch_assoc()) 
                             {
-                              while($row1 = $result1->fetch_assoc()) 
-                              {
-                                $sql2 = "SELECT * FROM company WHERE id_company=$row1[id_company]";
-                                $result2 = $conn->query($sql2);
-                                $row2 = $result2->fetch_assoc();
-                                ?>
-                                <div id="<?php echo $row1['id_mail']; ?>" class="inbox-body tab-pane fade in">
-                                  <div class="mail_heading row">
-                                    <div class="col-md-8">
-                                      <div class="btn-group">
-                                        <button class="btn btn-sm btn-primary" type="button"><i class="fa fa-reply"></i> Reply</button>
+                              $sql2 = "SELECT * FROM company WHERE id_company=$row1[id_company]";
+                              $result2 = $conn->query($sql2);
+                              $row2 = $result2->fetch_assoc();
+                              ?>
+                              <div id="<?php echo $row1['id_mail']; ?>" class="inbox-body tab-pane fade in">
+                                <div class="mail_heading row">
+                                  <!-- <div class="col-md-8"> -->
+                                    <!-- <div class="btn-group"> -->
+                                      <!-- <button class="btn btn-sm btn-primary" type="button"><i class="fa fa-reply"></i> Reply</button> -->
+                                      <!-- </div> -->
+                                      <!-- </div> -->
+                                      <!-- <div class="col-md-4 text-right"> -->
+                                        <!-- <p class="date"> <?php echo substr($row1['createdAt'],5,11); ?></p> -->
+                                        <!-- </div> -->
+                                        <div class="col-md-12">
+                                          <h4> <?php echo $row1['mail_title']; ?></h4>
+                                        </div>
                                       </div>
-                                    </div>
-                                    <div class="col-md-4 text-right">
-                                      <p class="date"> <?php echo substr($row1['createdAt'],5,11); ?></p>
-                                    </div>
-                                    <div class="col-md-12">
-                                      <h4> <?php echo $row1['mail_title']; ?></h4>
-                                    </div>
-                                  </div>
-                                  <div class="sender-info">
-                                    <div class="row">
-                                      <div class="col-md-12">
-                                        <strong><?php echo $row2['companyname']; ?></strong>
-                                        <span>(<?php echo $row2['email']; ?>)</span> to
-                                        <strong>me</strong>
-                                        <!-- <a class="sender-dropdown"><i class="fa fa-chevron-down"></i></a> -->
-                                        <br><br>
+                                      <div class="sender-info">
+                                        <div class="row">
+                                          <div class="col-md-12">
+                                            <strong><?php echo $row2['companyname']; ?></strong>
+                                            <span>(<?php echo $row2['email']; ?>)</span> to
+                                            <strong>me</strong> @ <?php echo substr($row1['createdAt'],5,11); ?>
+                                            <!-- <a class="sender-dropdown"><i class="fa fa-chevron-down"></i></a> -->
+                                            <br><br>
+                                          </div>
+                                        </div>
                                       </div>
-                                    </div>
-                                  </div>
-                                  <div class="view-mail">
-                                    <p><?php echo $row1['mail_content']; ?><br><br></p>
-                                    
-                                  </div>
+                                      <div class="view-mail">
+                                        <p><?php echo $row1['mail_content']; ?><br><br></p>
+                                        
+                                      </div>
                           <!-- <div class="attachment">
                             <p>
                               <span><i class="fa fa-paperclip"></i> 3 attachments — </span>

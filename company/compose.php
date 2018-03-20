@@ -8,14 +8,25 @@
     <form method="post" action="addmail.php">
       <div class="col-md-12 latest-job ">
         <div class="form-group">
+        <?php 
+        $user_id=NULL;
+       if(isset($_GET['id']))
+        {
+          $user_id=$_GET['id'];
+          $_SESSION['user_id']=$user_id;
+        }
+        
+          if ($user_id==NULL)
+          {?>
          <label for="heard">Applicants of:</label>
          <select id="to" name="to" class="form-control" required>
           <option value="">Choose..</option>
-          <?php 
-          $sql= "SELECT * FROM job_post WHERE id_company='$_SESSION[companyid]'";
+        <?php
+         $sql= "SELECT * FROM job_post WHERE id_company='$_SESSION[companyid]'";
           $result=$conn->query($sql);
 
-          if($result->num_rows > 0) {
+          if($result->num_rows > 0) 
+          {
            while($row = $result->fetch_assoc()) 
            {
             ?>
@@ -23,6 +34,7 @@
             <?php 
           }
         }
+      }
         ?>
       </select><br>
       <input class="form-control input-lg" type="text" id="subject" name="subject" placeholder="Mail Title">

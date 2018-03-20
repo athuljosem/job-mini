@@ -198,7 +198,7 @@
                             </ul>
                           </div> -->
                           <div class="btn-group">
-                            <button class="btn btn-sm btn-primary" type="button"><i class="fa fa-reply"></i> Reply</button>
+                            <a href="compose.php?id=<?php echo $row1['user_id']?>"><button class="btn btn-sm btn-primary" type="button"><i class="fa fa-reply"></i> Reply</button></a>
                           </div>
                         </div>
                         <?php

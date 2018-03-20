@@ -16,13 +16,23 @@ if(isset($_POST["submit"])) {
 
 	$subject = mysqli_real_escape_string($conn, $_POST['subject']);
 	$description = mysqli_real_escape_string($conn, $_POST['description']);
-	$jobid = mysqli_real_escape_string($conn, $_POST['to']);
-
+	if($_SESSION['user_id']==NULL)
+	{
+			$jobid = mysqli_real_escape_string($conn, $_POST['to']);
+	}
+	
 	//Update Query
+	if($_SESSION['user_id']!=NULL)
+	{
+$sql = "INSERT INTO company_mailbox(id_company,id_user,mail_title,mail_content) VALUES ( '$_SESSION[companyid]','$_SESSION[user_id]', '$subject', '$description')";
+	}
+	else
+	{
 	$sql = "INSERT INTO company_mailbox(id_company,id_jobpost,mail_title,mail_content) VALUES ( '$_SESSION[companyid]','$jobid', '$subject', '$description')";
-
+}
 	if($conn->query($sql) === TRUE) {
 		$session['mailsuccess'] = true;
+		$_SESSION['user_id']=NULL;
 		header("Location: mailbox.php");
 		exit();
 	} else {
