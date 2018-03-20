@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 19, 2018 at 09:06 AM
+-- Generation Time: Mar 20, 2018 at 03:49 PM
 -- Server version: 5.5.28
 -- PHP Version: 5.3.5
 
@@ -51,14 +51,15 @@ CREATE TABLE IF NOT EXISTS `apply_job` (
   `id_jobpost` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   PRIMARY KEY (`id_applyjob`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `apply_job`
 --
 
 INSERT INTO `apply_job` (`id_applyjob`, `id_company`, `id_jobpost`, `id_user`) VALUES
-(10, 1, 2, 1);
+(10, 1, 2, 1),
+(11, 1, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -134,7 +135,7 @@ CREATE TABLE IF NOT EXISTS `job_post` (
   `qualification` varchar(255) NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_jobpost`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `job_post`
@@ -142,7 +143,9 @@ CREATE TABLE IF NOT EXISTS `job_post` (
 
 INSERT INTO `job_post` (`id_jobpost`, `id_company`, `jobtitle`, `description`, `minimumsalary`, `maximumsalary`, `experience`, `qualification`, `createdAt`) VALUES
 (1, 1, 'bpo', '<p>well-knowlede in java,php and dbms</p>', '20000', '50000', '0', 'mca', '2018-02-24 16:54:44'),
-(2, 1, 'manager', '<p>The managing post of ernakulam branch</p>', '40000', '50000', '5', 'btech', '2018-03-01 11:40:21');
+(2, 1, 'manager', '<p>The managing post of ernakulam branch</p>', '40000', '50000', '5', 'btech', '2018-03-01 11:40:21'),
+(3, 1, 'Test Job', '<p>This is a test job</p>', '10000', '15000', '0', 'mca', '2018-03-19 22:03:42'),
+(4, 1, 'test2', '<p>adf</p>', '1234', '13243', '0', 'mca', '2018-03-19 22:09:05');
 
 -- --------------------------------------------------------
 
@@ -178,7 +181,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`user_id`, `fname`, `lname`, `email`, `password`, `address`, `city`, `state`, `country`, `contactno`, `qualification`, `stream`, `passingyear`, `dob`, `age`, `designation`, `photo`, `active`) VALUES
-(1, 'arjun', 't k', 'arjuntk6258@gmail.com', '1234', 'Thazhathetharayil house\r\nkulayettikkara p.o\r\nkeechery', 'ernakulam', 'kerala', 'india', '9496633406', 'mca', 'computer application', '2018-04-03', '1994-09-13', '23', 'student', '5a9797a943ada.png', 1),
+(1, 'arjun', 't k', 'arjuntk6258@gmail.com', '1234', 'Thazhathetharayil house\r\nkulayettikkara p.o\r\nkeechery', 'ernakulam', 'kerala', 'india', '9496633406', 'mca', 'computer application', '2018-04-03', '1994-09-13', '24', 'student', '5aaf8202cfff6.jpg', 1),
 (2, 'athul', 'jose', 'athuljosemenachery@gmail.com', '123', '', 'ernakulam', 'kerala', 'india', '', 'mca', '', '', '', '', '', '5a9c3bffb8a45.png', 1),
 (4, 'test', 'test', 'test@a.com', '1234', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, 0);
 
@@ -189,19 +192,22 @@ INSERT INTO `users` (`user_id`, `fname`, `lname`, `email`, `password`, `address`
 --
 
 CREATE TABLE IF NOT EXISTS `user_mailbox` (
-  `id_usermail` int(11) NOT NULL,
+  `id_usermail` int(11) NOT NULL AUTO_INCREMENT,
   `id_user` int(11) NOT NULL,
   `id_company` int(11) NOT NULL,
-  `id_jobpost` int(11) NOT NULL,
+  `id_jobpost` int(11) DEFAULT NULL,
   `mail_title` varchar(255) NOT NULL,
   `mail_content` text NOT NULL,
-  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_usermail`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `user_mailbox`
 --
 
+INSERT INTO `user_mailbox` (`id_usermail`, `id_user`, `id_company`, `id_jobpost`, `mail_title`, `mail_content`, `createdAt`) VALUES
+(1, 1, 1, NULL, 'test', 't', '2018-03-19 19:43:42');
 
 -- --------------------------------------------------------
 
@@ -219,12 +225,15 @@ CREATE TABLE IF NOT EXISTS `user_qualification` (
   `university` varchar(200) NOT NULL,
   `percentage` float NOT NULL,
   `grade` varchar(2) NOT NULL,
-  `passout` date NOT NULL,
+  `passout` int(11) NOT NULL,
   `register_number` int(100) NOT NULL,
   PRIMARY KEY (`q_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `user_qualification`
 --
 
+INSERT INTO `user_qualification` (`q_id`, `user_id`, `q_level`, `qualification`, `subject`, `institution`, `university`, `percentage`, `grade`, `passout`, `register_number`) VALUES
+(1, 1, 'ug', 'btech', 'cs', 'fisat', 'mg', 68, 'a', 2018, 700082),
+(2, 1, 'pg', 'mca', 'computer', 'fisat', 'mg', 68, 'a', 2018, 700083);
