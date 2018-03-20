@@ -113,14 +113,14 @@
                                 ?>
                                 <div id="<?php echo $row['id_usermail']; ?>" class="inbox-body tab-pane fade in">
                                   <div class="mail_heading row">
-                                    <div class="col-md-8">
-                                      <div class="btn-group">
+                                    <!-- <div class="col-md-8"> -->
+                                      <!-- <div class="btn-group">
                                         <button class="btn btn-sm btn-primary" type="button"><i class="fa fa-reply"></i> Reply</button>
-                                      </div>
-                                    </div>
-                                    <div class="col-md-4 text-right">
-                                      <p class="date"> <?php echo substr($row['createdAt'],5,11); ?></p>
-                                    </div>
+                                      </div> -->
+                                    <!-- </div> -->
+                                    <!-- <div class="col-md-4 text-right"> -->
+                                      <!-- <p class="date"> <?php echo substr($row['createdAt'],5,11); ?></p> -->
+                                    <!-- </div> -->
                                     <div class="col-md-12">
                                       <h4> <?php echo $row['mail_title']; ?></h4>
                                     </div>
@@ -130,7 +130,7 @@
                                       <div class="col-md-12">
                                         <strong><?php echo $row1['fname']; ?> <?php echo $row1['lname']; ?></strong>
                                         <span>(<?php echo $row1['email']; ?>)</span> to
-                                        <strong>me</strong>
+                                        <strong>me</strong> @ <?php echo substr($row['createdAt'],5,11); ?>
                                         <!-- <a class="sender-dropdown"><i class="fa fa-chevron-down"></i></a> -->
                                         <br><br>
                                       </div>

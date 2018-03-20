@@ -23,15 +23,15 @@
           <?php while($row = $result->fetch_assoc()): ?>
             <div class="panel panel-primary">
               <div class="panel-heading">
-                <b><?= $row['qualification'] ?></b> (<?= $row['subject'] ?>)
+                <b><?php echo $row['qualification'];?></b> (<?php echo $row['subject'];?>)
               </div>
               <div class="panel-body">
 
                   <b><?= $row['q_level']?></b>
-                  <span class="label label-danger"><?= $row['percentage']?>%</span ><br>
-                  <b>Grade: <?= $row['grade']?> </b><br>
-                  <b><?= $row['institution']?></b>(<?= $row['university']?>) <br>
-                  <i>Passout-<?= $row['passout'];?></i> 
+                  <span class="label label-danger"><?php echo $row['percentage'];?>%</span ><br>
+                  <b>Grade: <?php echo $row['grade'];?> </b><br>
+                  <b><?php echo $row['institution'];?></b>(<?php echo $row['university'];?>) <br>
+                  <i>Passout-<?php echo $row['passout'];?></i> 
               </div> 
               <!-- <div class="panel-footer"> -->
               <!-- </div> -->

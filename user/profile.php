@@ -98,19 +98,22 @@ if($result->num_rows > 0) {
                       <div class="">
                         <div class="col-md-8 col-md-offset-2 well">
                           
-                          <form method="post" action="updateprofile.php" enctype="multipart/form-data">
+                          <form method="post" action="updateprofile.php" enctype="multipart/form-data" class="form-horizontal form-label-left input_mask">
                             
-                            <div class="form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                               <label for="fname">First Name</label>
-                              <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" value="<?php echo $row['fname']; ?>" required="">
+                              <input type="text" class="form-control has-feedback-left" id="fname" name="fname" placeholder="First Name" value="<?php echo $row['fname']; ?>" required="">
+                              <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
                             </div>
-                            <div class="form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                               <label for="lname">Last Name</label>
                               <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name" value="<?php echo $row['lname']; ?>" required="">
+                              <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
                             </div>
-                            <div class="form-group">
+                            <div class="col-xs-12 form-group has-feedback">
                               <label for="email">Email address</label>
-                              <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="<?php echo $row['email']; ?>" readonly>
+                              <input type="email" class="form-control has-feedback-left" id="email" disabled="disabled" name="email" placeholder="Email" value="<?php echo $row['email']; ?>" readonly>
+                              <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
                             </div>
                             <div class="form-group">
                               <label for="address">Address</label>
