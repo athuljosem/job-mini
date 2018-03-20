@@ -107,7 +107,10 @@ if($result->num_rows > 0) {
                       <li><a href="profile.php"><i class="fa fa-edit"></i> Edit Profile </a>
 
                       </li>
-                      <li><a href="myapplication.php"><i class="fa fa-edit"></i> Applied Jobs </a>
+                      <li><a href="myapplication.php"><i class="fa fa-tasks"></i> Applied Jobs </a>
+
+                      </li>
+                      <li><a href="qualification.php"><i class="fa fa-credit-card"></i>qualification </a>
 
                       </li>
                       <li><a href="view_jobpost.php"><i class="fa fa-desktop"></i> Jobs </a>
