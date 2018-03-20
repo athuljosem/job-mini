@@ -13,7 +13,7 @@
       <div class="container-fluid">
         
         <!-- list of the added qualifications -->
-        <div class="col-md-4">
+        <!-- <div class="col-md-4">
           <div class="panel-group">
 
             <div class="panel panel-default">
@@ -25,12 +25,13 @@
             </div>
 
           </div>
-        </div>
+        </div> -->
+        
 
         <!-- form to enter the qualifications -->
         <div class="col-md-7">
           <div class="well">
-            <form  method="post" action="insertqualification.php">
+            <form id="qual_form" method="post" action="insertqualification.php">
 <div class="form-group">
                 <label for="q_level" >Qualification Level</label>
                 <input type="text" class="form-control" id="q_level" name="q_level" >
