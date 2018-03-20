@@ -28,7 +28,7 @@
                     </thead>
                     <tbody>
                       <?php
-                      $sql = "SELECT * FROM users WHERE active='3'";
+                      $sql = "SELECT * FROM users WHERE active='1'";
                       $result = $conn->query($sql);
                       if($result->num_rows > 0) {
                         while($row = $result->fetch_assoc()) {
@@ -41,16 +41,16 @@
                         <td><?php echo $row['state']; ?></td>
                         <td><?php echo $row['country']; ?></td>
                         <td>
-                       <?php
-                          if($row['active'] == '3') {
-                           
+                        <?php
+                          if($row['active'] == '1') {
+                            echo "Registered";
+                          } else if($row['active'] == '0') {
+                            echo "Not Registered";
+                          }
                             ?>
-                             <a class="btn btn-default bg-green" href="add-candidate.php?id=<?php echo $row['user_id']; ?>">Approve</a>
-                            <?php
-                          } 
-                        ?>           
+                                       
                         </td>
-                        <td><a href="delete-candidate.php?id=<?php echo $row['user_id']; ?>"><i class="fa fa-trash"></i> </a></td>
+                        <td><a href="delete-company.php?id=<?php echo $row['user_id']; ?>"><i class="fa fa-trash"></i> </a></td>
                       </tr>  
                      <?php
                         }

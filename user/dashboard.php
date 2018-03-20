@@ -26,7 +26,7 @@
     }
     $_SESSION['leftpanel'] = 'dashboard';
 
-    $sql = "SELECT * FROM job_post WHERE qualification='$qualification' ";
+    $sql = "SELECT * FROM job_post WHERE qualification='$qualification' and active='1' ";
     $result = $conn->query($sql);
 
                       //If Job Post exists then display details of post

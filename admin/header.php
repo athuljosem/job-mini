@@ -71,26 +71,26 @@ require_once("../dbcon.php");?>
                   <li><a href="dashboard.php"><i class="fa fa-home"></i> Dashboard </a>
                     
                     </li>
-                  <li><a><i class="fa fa-check-square"></i> Approve <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-check-square"></i> Pending <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="approve-candidate.php">Candidates</a></li>
-                      <li><a href="approve-company.php">Company</a></li>
-                      <li><a href="approve-jobpost.php">Jobpost</a></li>
+                      <li><a href="pending-candidate.php">Candidates</a></li>
+                      <li><a href="pending-company.php">Company</a></li>
+                      <li><a href="pending-jobpost.php">Jobpost</a></li>
                      
                     </ul>
                   </li>
                   
-                  <li><a><i class="fa fa-edit"></i> Edit/Delete <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-edit"></i> Approved <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="candidates.php">Candidates</a></li>
-                      <li><a href="company.php">Company</a></li>
+                      <li><a href="approved-candidates.php">Candidates</a></li>
+                      <li><a href="approved-company.php">Company</a></li>
                       <li><a href="active-jobs.php">Jobpost</a></li>
                      
                     </ul>
                   </li>
                   <li><a><i class="fa fa-check-square"></i> Rejected <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="rejected-candidate.php">Candidates</a></li>
+                      <li><a href="rejected-candidates.php">Candidates</a></li>
                       <li><a href="rejected-company.php">Company</a></li>
                       <li><a href="rejected-jobpost.php">Jobpost</a></li>
                      

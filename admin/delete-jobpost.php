@@ -18,7 +18,7 @@ if(isset($_GET)) {
 		}
 		header("Location: dashboard.php");
 		exit();
-	} else {
+	} 
+	}else {
 		echo "Error";
-	}
 }

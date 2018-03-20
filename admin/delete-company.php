@@ -14,10 +14,20 @@ if(isset($_GET)) {
 
 	//Delete Company using id and redirect
 	$sql = "DELETE FROM company WHERE id_company='$_GET[id]'";
-	if($conn->query($sql)) {
+	if($conn->query($sql)) 
+	{
+		$sql = "DELETE FROM job_post WHERE id_company='$_GET[id]'";
+	if($conn->query($sql))
+	 {
+		$sql1 = "DELETE FROM apply_job_post WHERE id_company='$_GET[id]'";
+		if($conn->query($sql1)) 
+		{
+		
 		header("Location: dashboard.php");
 		exit();
-	} else {
+	    } 
+	 }
+    }
+}else {
 		echo "Error";
-	}
 }

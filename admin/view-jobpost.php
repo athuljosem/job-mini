@@ -21,7 +21,7 @@
               <h1><b><i><?php echo $row['jobtitle']; ?></i></b></h1>
             </div>
             <div class="pull-right">
-              <a href="view_jobpost.php" class="btn btn-default btn-lg btn-flat margin-top-20"><i class="fa fa-arrow-circle-left"></i> Back</a>
+              <a href="active-jobs.php" class="btn btn-default btn-lg btn-flat margin-top-20"><i class="fa fa-arrow-circle-left"></i> Back</a>
             </div>
             <div class="clearfix"></div>
             <hr>
