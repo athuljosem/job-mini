@@ -13,33 +13,31 @@
       <!-- list of the added qualifications -->
 
       <div class="col-md-4">
+
+        <?php   
+          $sql = "SELECT * FROM user_qualification WHERE user_id='$_SESSION[userid]'";
+          $result = $conn->query($sql);
+        ?>
         <div class="panel-group">
+        <?php if ($result->num_rows > 0): ?> 
+          <?php while($row = $result->fetch_assoc()): ?>
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <b><?= $row['qualification'] ?></b> (<?= $row['subject'] ?>)
+              </div>
+              <div class="panel-body">
 
-          <div class="panel panel-default">
-            <div class="panel-heading">hello</div>
-            <div class="panel-body">
-<?php
-      
-      $sql = "SELECT * FROM user_qualification WHERE user_id='$_SESSION[userid]'";
-      $result = $conn->query($sql);
-      
-      if($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) 
-        {?>
-
-          <b><?php echo $row['q_level'];?></b>-<b><?php echo $row['qualification'];?></b>(<?php echo $row['subject'];?>)<br>
-          <b><?php echo $row['institution'];?></b>(<?php echo $row['university'];?>)<br>
-          <b><?php echo $row['percentage'];?>%</b>-<b><?php echo $row['grade'];?> Grade</b><br>
-          <?php echo $row['passout'];?> Passout<br>
-          <br><br>
-          <?php
-        }
-      }
-      ?>
-            </div> 
-            <div class="panel-footer"></div>
-          </div>
-
+                  <b><?= $row['q_level']?></b>
+                  <span class="label label-danger"><?= $row['percentage']?>%</span ><br>
+                  <b>Grade: <?= $row['grade']?> </b><br>
+                  <b><?= $row['institution']?></b>(<?= $row['university']?>) <br>
+                  <i>Passout-<?= $row['passout'];?></i> 
+              </div> 
+              <!-- <div class="panel-footer"> -->
+              <!-- </div> -->
+            </div>
+          <?php endwhile ?>
+        <?php endif ?>
         </div>
       </div>
       
