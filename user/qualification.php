@@ -1,6 +1,6 @@
 <?php include 'header.php' ?>
 
-<?php $fields = array("qualification", "subject", "institution", "university", "percentage", "grade", "passout", "register_number"); ?>
+<?php $fields = array("q_level","qualification", "subject", "institution", "university", "percentage", "grade", "passout", "register_number"); ?>
 
 <div class="right_col" role="main">
   <div class="col-md-12 col-sm-12 col-xs-12">
@@ -30,8 +30,11 @@
         <!-- form to enter the qualifications -->
         <div class="col-md-7">
           <div class="well">
-            <form id="qual_form">
-
+            <form  method="post" action="insertqualification.php">
+<div class="form-group">
+                <label for="q_level" >Qualification Level</label>
+                <input type="text" class="form-control" id="q_level" name="q_level" >
+              </div>
               <div class="form-group">
                 <label for="qualification_id" >qualification</label>
                 <input type="text" class="form-control" id="qualification_id" name="qualification" >
@@ -72,7 +75,7 @@
                 <input type="text" class="form-control" id="register_number_id" name="register_number" >
               </div>
 
-              <button id="qual_submit" class="btn btn-success">submit</button>
+              <button  class="btn btn-success" name="submit">submit</button>
             </form>
           </div>
         </div>
@@ -92,7 +95,7 @@
 
       event.preventDefault();
 
-      $.post('uploadQ.php',  $('#qual_form').serialize(), 
+      $.post('insertqualification.php',  $('#qual_form').serialize(), 
         function(response) {
           // Log the response to the console
           console.log("Response: " + response);
