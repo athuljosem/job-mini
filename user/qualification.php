@@ -31,12 +31,47 @@
         <div class="col-md-7">
           <div class="well">
             <form id="qual_form">
-              <?php foreach ($fields as $index => $value): ?>
-                <div class="form-group">
-                  <label for=<?= $index ?> > <?= $value ?></label>
-                  <input type="text" class="form-control" id=<?= $index ?> name=<?= $value ?> >
-                </div>
-              <?php endforeach ?>
+
+              <div class="form-group">
+                <label for="qualification_id" >qualification</label>
+                <input type="text" class="form-control" id="qualification_id" name="qualification" >
+              </div>
+
+              <div class="form-group">
+                <label for="subject_id" >subject</label>
+                <input type="text" class="form-control" id="subject_id" name="subject" >
+              </div>
+
+              <div class="form-group">
+                <label for="institution_id" >institution</label>
+                <input type="text" class="form-control" id="institution_id" name="institution" >
+              </div>
+
+              <div class="form-group">
+                <label for="university_id" >university</label>
+                <input type="text" class="form-control" id="university_id" name="university" >
+              </div>
+
+              <div class="form-group">
+                <label for="percentage_id" >percentage</label>
+                <input type="text" class="form-control" id="percentage_id" name="percentage" >
+              </div>
+
+              <div class="form-group">
+                <label for="grade_id" >grade</label>
+                <input type="text" class="form-control" id="grade_id" name="grade" >
+              </div>
+
+              <div class="form-group">
+                <label for="passout_id" >passout</label>
+                <input type="text" class="form-control" id="passout_id" name="passout" >
+              </div>
+
+              <div class="form-group">
+                <label for="register_number_id" >register_number</label>
+                <input type="text" class="form-control" id="register_number_id" name="register_number" >
+              </div>
+
               <button id="qual_submit" class="btn btn-success">submit</button>
             </form>
           </div>
