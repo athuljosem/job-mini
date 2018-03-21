@@ -67,7 +67,10 @@ if($result->num_rows > 0) {
       <link href="../vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
 
       <!-- Custom Theme Style -->
-      <link href="../build/css/custom.min.css" rel="stylesheet">
+      <link href="../build/css/custom.css" rel="stylesheet">
+
+      <!-- ivy css for flexbox -->
+      <link href="../build/css/ivy.css" rel="stylesheet"/>
     </head>
 
     <body class="nav-md">
@@ -82,16 +85,23 @@ if($result->num_rows > 0) {
               <div class="clearfix"></div>
 
               <!-- menu profile quick info -->
-              <div class="profile clearfix">
+              <div class="profile">
                 <div class="profile_pic">
-                  <img src="../uploads/user/<?php echo $row['photo']; ?>" alt="..." class="img-circle profile_img">
+                  <?php if (file_exists("../uploads/user/" + $row['photo'])): ?>
+                    <img src="../uploads/user/<?php echo $row['photo']; ?>" alt="..." class="img-circle profile_img">
+                  <?php else: ?>
+                    <img src="../uploads/user/default.jpg" alt="..." class="img-circle profile_img">
+                  <?php endif ?>
                 </div>
                 <div class="profile_info">
                   <span>Welcome,</span>
                   <h2> <?php echo $user; ?></h2>
 
                 </div>
-                <h6> <?php echo $email; ?></h6>
+                <div class="clearfix"></div>
+                <div style="margin-top: 10px;">
+                  <p style="margin-left: 12px;"> <?php echo $email; ?> </p>
+                </div>
               </div>
               <!-- /menu profile quick info -->
 
@@ -110,7 +120,7 @@ if($result->num_rows > 0) {
                       <li><a href="myapplication.php"><i class="fa fa-tasks"></i> Applied Jobs </a>
 
                       </li>
-                      <li><a href="qualification.php"><i class="fa fa-credit-card"></i>qualification </a>
+                      <li><a href="qualification.php"><i class="fa fa-credit-card"></i> Qualification </a>
 
                       </li>
                       <li><a href="view_jobpost.php"><i class="fa fa-desktop"></i> Jobs </a>

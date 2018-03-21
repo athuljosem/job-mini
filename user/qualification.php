@@ -9,45 +9,52 @@
         <h2>Qualification</h2>
         <!-- Trigger the modal with a button -->
         <div class="" style="float: right;">
-          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">+</button>
+          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i></button>
         </div>
         <div class="clearfix"></div>        
       </div>
 
       <!-- list of the added qualifications -->
 
-      <div class="col-md-4">
+      <div class="col-md-12">
 
         <?php   
           $sql = "SELECT * FROM user_qualification WHERE user_id='$_SESSION[userid]'";
           $result = $conn->query($sql);
         ?>
-        <div class="panel-group">
-        <?php if ($result->num_rows > 0): ?> 
-          <?php while($row = $result->fetch_assoc()): ?>
-            <div class="panel panel-primary">
-              <div class="panel-heading">
-                <b><?php echo $row['qualification'];?></b> (<?php echo $row['subject'];?>)
+        <div class="panel-group ">
+          <div class="flex-container">
+          <?php if ($result->num_rows > 0): ?> 
+            <?php while($row = $result->fetch_assoc()): ?>
+              <div class="flex-item">
+                <div id=<?php echo $row['q_id']; ?> class="panel panel-primary">
+                  <div class="panel-heading">
+                    <b><?php echo $row['qualification'];?></b> (<?php echo $row['subject'];?>)
+                    <div style="float: right;">
+                      <button id="q_edit" class="btn btn-info"><i class="fa fa-edit"></i></button>
+                      <button id="q_delete" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="panel-body ">
+                
+                      <b><?= $row['q_level']?></b>
+                      <span class="label label-danger"><?php echo $row['percentage'];?>%</span ><br>
+                      <b>Grade: <?php echo $row['grade'];?> </b><br>
+                      <b><?php echo $row['institution'];?></b>(<?php echo $row['university'];?>) <br>
+                      <i>Passout-<?php echo $row['passout'];?></i> 
+                  </div> 
+                </div>
               </div>
-              <div class="panel-body">
-
-                  <b><?= $row['q_level']?></b>
-                  <span class="label label-danger"><?php echo $row['percentage'];?>%</span ><br>
-                  <b>Grade: <?php echo $row['grade'];?> </b><br>
-                  <b><?php echo $row['institution'];?></b>(<?php echo $row['university'];?>) <br>
-                  <i>Passout-<?php echo $row['passout'];?></i> 
-              </div> 
-            </div>
-          <?php endwhile ?>
-        <?php endif ?>
+            <?php endwhile ?>
+          <?php endif ?>
+          </div>
         </div>
       </div>
       
       
       <!-- form to enter the qualifications -->
-      
-
-
+    
       <!-- Modal -->
       <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -58,14 +65,19 @@
                 
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">Modal Header</h4>
+                  <h4 class="modal-title">Add Qualification</h4>
                 </div>
 
                 <div class="modal-body">
 
                   <div class="form-group">
                     <label for="q_level" >Qualification Level</label>
-                    <input type="text" class="form-control" id="q_level" name="q_level" >
+                    <select type="text" class="form-control" id="q_level" name="q_level" >
+                      <option> UG</option>
+                      <option> PG</option>
+                      <option> +2</option>
+                      <option> SSLC</option>
+                    </select>
                   </div>
                   <div class="form-group">
                     <label for="qualification_id" >qualification</label>
@@ -120,47 +132,3 @@
 
 <?php include 'footer.php' ?>
 
-<script>
-  $(function () {
-
-    $('#qual_submit').on('click', function (event) {
-
-      event.preventDefault();
-
-      $.post('insertqualification.php',  $('#qual_form').serialize(), 
-        function(response) {
-          // Log the response to the console
-          console.log("Response: " + response);
-          console.log('success');
-        }
-        );
-
-      console.log('hello');
-    });
-
-  });
-</script>
-
-<!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
-      </div>
-      <div class="modal-body">
-        <p>Some text in the modal.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>

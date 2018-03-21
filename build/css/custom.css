@@ -261,14 +261,16 @@ html , body{
     float: left
 }
 .img-circle.profile_img {
-    width: 70%;
+    /*width: 70%;*/
+    max-height: 60px;
+    min-width: 60px;
     background: #fff;
     margin-left: 15%;
     z-index: 1000;
     position: inherit;
     margin-top: 10px;
     border: 1px solid rgba(52, 73, 94, 0.44);
-    padding: 4px
+    padding: 0px
 }
 .profile_info {
     padding: 10px;
@@ -2836,7 +2838,7 @@ ul.widget_profile_box li a:hover {
 ul.widget_profile_box li .profile_img {
     width: 85px;
     height: 85px;
-    margin: 0;
+    margin: 0px;
     margin-top: -28px
 }
 .widget_tally_box p,
