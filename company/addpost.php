@@ -11,10 +11,33 @@ if(isset($_POST["submit"])) {
 	$minimumsalary = mysqli_real_escape_string($conn, $_POST['minimumsalary']);
 	$maximumsalary = mysqli_real_escape_string($conn, $_POST['maximumsalary']);
 	$experience = mysqli_real_escape_string($conn, $_POST['experience']);
-	$qualification = mysqli_real_escape_string($conn, $_POST['qualification']);
+	// $qualification = mysqli_real_escape_string($conn, $_POST['qualification']);
+	$ugcourse="";
+	$pgcourse="";
+
+	if(!empty($_POST['ugcheck']))
+	{
+// Loop to store and display values of individual checked checkbox.
+foreach($_POST['ugcheck'] as $selected)
+{
+echo $selected."</br>";
+$ugcourse=$ugcourse." ".$selected;
+}
+}
+
+	if(!empty($_POST['pgcheck']))
+	{
+// Loop to store and display values of individual checked checkbox.
+foreach($_POST['pgcheck'] as $selected)
+{
+echo $selected."</br>";
+$pgcourse=$pgcourse." ".$selected;
+}
+}
 
 	//Update Query
-	$sql = "INSERT INTO job_post(id_company,jobtitle,description,minimumsalary,maximumsalary,experience,qualification) VALUES ( '$_SESSION[companyid]', '$jobtitle', '$description', '$minimumsalary', '$maximumsalary', '$experience', '$qualification')";
+	$sql = "INSERT INTO job_post(id_company,jobtitle,description,minimumsalary,maximumsalary,experience,ug_course,pg_course) VALUES ( '$_SESSION[companyid]', '$jobtitle', '$description', '$minimumsalary', '$maximumsalary', '$experience', '$ugcourse','$pgcourse')";
+
 
 	if($conn->query($sql) === TRUE) {
 		$session['jobpostsuccess'] = true;

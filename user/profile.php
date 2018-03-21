@@ -89,7 +89,7 @@ if($result->num_rows > 0) {
 
                 </div>
                 <!-- edit profile -->
-                <div class="col-md-8 col-sm-8 col-xs-11">
+                <div class="col-md-9 col-sm-9 col-xs-8">
                   
 
                   <div id="editprofile">                                   

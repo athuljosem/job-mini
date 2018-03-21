@@ -2,7 +2,7 @@
 
 <!-- page content -->
 <div class="right_col" role="main">
- 
+
   <h3><i>Create Job Post</i></h3>
   <div class="row">
     <form method="post" action="addpost.php">
@@ -23,8 +23,58 @@
           <input type="number" class="form-control  input-lg" id="experience" autocomplete="off" name="experience" placeholder="Experience (in Years) Required" required="">
         </div>
         <div class="form-group">
-          <input type="text" class="form-control  input-lg" id="qualification" name="qualification" placeholder="Qualification Required" required="">
+          <!-- <input type="text" class="form-control  input-lg" id="qualification" name="qualification" placeholder="Qualification Required" required=""> -->
         </div>
+        <div class="col-md-9 col-sm-9 col-xs-12">
+
+
+          <h2>UG Courses</h2>
+          <?php
+          $sql = "SELECT DISTINCT qualification,subject FROM user_qualification WHERE q_level='UG'";
+          $result = $conn->query($sql);
+
+                //If Job Post exists then display details of post
+          if($result->num_rows > 0) 
+          {
+            while($row = $result->fetch_assoc()) 
+            {
+              ?>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" class="flat" name="ugcheck[]" value="<?php echo $row['qualification'];?>-<?php echo $row['subject'];?>"><?php echo $row['qualification'];?>-<?php echo $row['subject'];?><br>
+                </label>
+              </div>
+              <?php
+            }
+          }
+          ?>
+          <br><h2>PG Courses</h2>
+          <?php
+          $sql = "SELECT DISTINCT qualification,subject FROM user_qualification WHERE q_level='PG'";
+          $result = $conn->query($sql);
+
+                //If Job Post exists then display details of post
+          if($result->num_rows > 0) 
+          {
+            while($row = $result->fetch_assoc()) 
+            {
+              ?>
+              <!-- <div class="col-md-9 col-sm-9 col-xs-12"> -->
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" class="flat"  name="pgcheck[]" value="<?php echo $row['qualification'];?>-<?php echo $row['subject'];?>"><?php echo $row['qualification'];?>-<?php echo $row['subject'];?><br>
+                  </label>
+                </div>
+                <?php
+              }
+            }
+            ?>
+          </div>
+        </div>
+
+
+
+
         <!-- <div class="control-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Input Tags</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
@@ -32,15 +82,15 @@
                           <div id="suggestions-container" style="position: relative; float: left; width: 250px; margin: 10px;"></div>
                         </div>
                       </div> -->
-        <div class="form-group">
-          <input type="submit" class="btn btn-flat btn-success" name="submit" value="Create">
-        </div>
-      </form>
-    </div>
-  </div>
+                      <div class="form-group">
+                        <input type="submit" class="btn btn-flat btn-success" name="submit" value="Create">
+                      </div>
+                    </form>
+                  </div>
+                </div>
 
 
-  <!-- /page content -->
+                <!-- /page content -->
 
-  <!-- footer content -->
-  <?php include 'footer.php' ?>
+                <!-- footer content -->
+                <?php include 'footer.php' ?>

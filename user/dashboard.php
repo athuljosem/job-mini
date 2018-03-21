@@ -14,19 +14,33 @@
 
                         //FIX:There is a more easier way to do this Should fix it!!
 
-    $sql = "SELECT qualification FROM users WHERE user_id='$_SESSION[userid]'";
+    $sql = "SELECT qualification,subject FROM user_qualification WHERE user_id='$_SESSION[userid]' AND q_level='UG'";
     $result = $conn->query($sql);
 
                       //If Job Post exists then display details of post
     if($result->num_rows > 0) {
       while($row = $result->fetch_assoc()) 
       {
-        $qualification=$row["qualification"];
+        $ug_course=$row["qualification"];
+        $ug_branch=$row["subject"];
       }
     }
+
+$sql1 = "SELECT qualification,subject FROM user_qualification WHERE user_id='$_SESSION[userid]' AND q_level='PG'";
+    $result1 = $conn->query($sql1);
+
+                      //If Job Post exists then display details of post
+    if($result1->num_rows > 0) {
+      while($row1 = $result1->fetch_assoc()) 
+      {
+        $pg_course=$row1["qualification"];
+        $pg_branch=$row1["subject"];
+      }
+    }
+
     $_SESSION['leftpanel'] = 'dashboard';
 
-    $sql = "SELECT * FROM job_post WHERE qualification='$qualification' and active='1' ";
+    $sql = "SELECT * FROM job_post WHERE pg_course LIKE '%$pg_course-$pg_branch%' AND ug_course LIKE '%$ug_course-$ug_branch%' and active='1' ";
     $result = $conn->query($sql);
 
                       //If Job Post exists then display details of post
