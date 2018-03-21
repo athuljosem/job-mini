@@ -18,7 +18,7 @@ if(isset($_POST)) {
 
 
 	//Encrypt Password
-	$password = base64_encode(strrev(md5($password)));
+	//$password = base64_encode(strrev(md5($password)));
 
 	//sql query to check if email already exists or not
 	$sql = "SELECT email FROM company WHERE email='$email'";
@@ -29,7 +29,7 @@ if(isset($_POST)) {
 
 			//This variable is used to catch errors doing upload process. False means there is some error and we need to notify 
 		//sql new registration insert query
-		$sql = "INSERT INTO company(companyname, email, password,) VALUES ('$companyname', '$email', '$password')";
+		$sql = "INSERT INTO company(companyname, email, password) VALUES ('$companyname', '$email', '$password')";
 
 		if($conn->query($sql)===TRUE) {
 

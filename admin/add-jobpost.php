@@ -13,9 +13,9 @@ require_once("../dbcon.php");
 if(isset($_GET)) {
 
 	//Delete Company using id and redirect
-	$sql = "UPDATE job_post SET active='1' WHERE id_company='$_GET[id]'";
+	$sql = "UPDATE job_post SET active='1' WHERE id_jobpost='$_GET[id]'";
 	if($conn->query($sql)) {
-		header("Location: dashboard.php");
+		header("Location: pending-jobpost.php");
 		exit();
 	} else {
 		echo "Error";
