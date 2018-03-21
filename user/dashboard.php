@@ -12,6 +12,10 @@
     
     <?php
 
+$ug_course="*";
+$pg_course="*";
+$ug_branch="*";
+$pg_branch="*";
                         //FIX:There is a more easier way to do this Should fix it!!
 
     $sql = "SELECT qualification,subject FROM user_qualification WHERE user_id='$_SESSION[userid]' AND q_level='UG'";

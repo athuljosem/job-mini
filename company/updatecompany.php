@@ -24,7 +24,7 @@ if(isset($_POST)) {
 	$name = mysqli_real_escape_string($conn, $_POST['name']);
 
 	//Encrypt Password
-	$password = base64_encode(strrev(md5($password)));
+	// $password = base64_encode(strrev(md5($password)));
 
 	//sql query to check if email already exists or not
 	$sql = "SELECT email FROM company WHERE email='$email'";
