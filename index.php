@@ -17,14 +17,16 @@
 	<!-- Theme skin -->
 	<link href="skins/default.css" rel="stylesheet" />
 
+	<!-- ivy -->
+	<link href="build/css/ivy.css" rel="stylesheet"/>
 </head>
 
 <body>
 	<div id="wrapper">
 		<!-- start header -->
 		<header>
-			<div class="navbar navbar-default navbar-static-top">
-				<div class="container">
+			<div class="container">
+				<div class="navbar navbar-default">
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="icon-bar"></span>
@@ -39,20 +41,21 @@
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Features <b class=" icon-angle-down"></b></a>
 								<ul class="dropdown-menu">
-									<li><a href="register.php">Typography</a></li>
-									<li><a href="components.html">Components</a></li>
-									<li><a href="pricingbox.html">Pricing box</a></li>
+									<div class="panel panel-info" style="margin-bottom: 0px;">
+										<li><a href="register.php">Typography</a></li>
+										<li><a href="components.html">Components</a></li>
+										<li><a href="pricingbox.html">Pricing box</a></li>
+									</div>
 								</ul>
 							</li>
-							<li><a href="portfolio.html">Portfolio</a></li>
-							<li><a href="blog.html">Blog</a></li>
 							<li><a href="contact.html">Contact</a></li>
 							<li class="dropdown">
-								<a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Login <b class=" icon-angle-down"></b></a>
-								<ul class="dropdown-menu">
-									<li><a href="login.php">candidate</a></li>
-									<li><a href="companylogin.php">company</a></li>
-									
+								<a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Login <b class="icon-angle-down"></b></a>
+								<ul class="dropdown-menu" style="min-width: 80px;">
+									<div class="panel panel-info" style="margin-bottom: 0px;">
+										<li class=""><a href="login.php">candidate</a></li>
+										<li class=""><a href="companylogin.php">company</a></li>
+									</div>
 								</ul>
 							</li>
 						</ul>
@@ -67,7 +70,7 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<!-- Slider -->
-						<div id="main-slider" class="flexslider">
+						<div id="main-slider" class="flexslider" >
 							<ul class="slides">
 								<li>
 									<img src="img/slides/1.jpg" alt="" />
@@ -99,10 +102,8 @@
 					</div>
 				</div>
 			</div>
-
-
-
 		</section>
+
 		<section class="callaction">
 			<div class="container">
 				<div class="row">
@@ -120,43 +121,39 @@
 			<div class="container">
 				
 				<div class="row">
-					<div class="col-lg-12">
-						<div class="row">
-							<?php
-				$sql = "SELECT * FROM job_post Order By rand() limit 4";
-                      $result = $conn->query($sql);
-
-                      //If Job Post exists then display details of post
-                      if($result->num_rows > 0) {
-                        while($row = $result->fetch_assoc()) 
-                        {
-                      ?>
-							<div class="col-lg-3">
-								<div class="box">
-									<div class="box-gray aligncenter">
-										<h4><?php echo $row['jobtitle']; ?></h4>
-										<div class="icon">
-											<i class="fa fa-desktop"></i>
+					<!-- If Job Post exists then display details of post -->
+					<?php
+						$sql = "SELECT * FROM job_post Order By rand() limit 4";
+						$result = $conn->query($sql);
+					?>
+					<div class="panel-group">
+						<?php if ($result->num_rows > 0): ?>
+							<?php while ($row = $result->fetch_assoc()): ?>
+							<div class="col-md-3">
+								<div class="panel panel-default">
+									<div class="box" style="min-height: 330px;">
+										<div class="box-gray aligncenter">
+											<h4><?php echo $row['jobtitle']; ?></h4>
+											<div class="icon">
+												<i class="fa fa-desktop fa-3x"></i>
+											</div>
+											<p>
+												<?php echo $row['description']; ?>
+											</p>
 										</div>
-										<p>
-											<?php echo $row['description']; ?>
-										</p>
-
-									</div>
-									<div>
-									<h4><span>salary :</span><?php echo $row['minimumsalary']; ?>-<?php echo $row['maximumsalary']; ?></h4>
-								</div>
-
-									<div class="box-bottom" align="box-bottom">
-										<a href="#">Learn more</a>
+										<div class="card-bottom">
+											<div class="text-center">
+												<h4><span>salary :</span><?php echo $row['minimumsalary']; ?>-<?php echo $row['maximumsalary']; ?></h4>
+											</div>
+											<div class="box-bottom">
+												<a href="#">Learn more</a>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
-							<?php 
-			}
-		}
-		?>
-						</div>
+							<?php endwhile ?>
+						<?php endif ?>
 					</div>
 				</div>
 				
@@ -168,74 +165,98 @@
 					</div>
 				</div>
 				<!-- end divider -->
-				<!-- Portfolio Projects -->
-				<div class="row">
-					<div class="col-lg-12">
-						<h4 class="heading">Recent Works</h4>
-						<div class="row">
-							<section id="projects">
-								<ul id="thumbs" class="portfolio">
-									<!-- Item Project and Filter Name -->
-									<li class="col-lg-3 design" data-id="id-0" data-type="web">
-										<div class="item-thumbs">
-											<!-- Fancybox - Gallery Enabled - Title - Full Image -->
-											<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Work 1" href="img/works/1.jpg">
-						<span class="overlay-img"></span>
-						<span class="overlay-img-thumb font-icon-plus"></span>
-						</a>
-											<!-- Thumb Image and Description -->
-											<img src="img/works/1.jpg" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
-										</div>
-									</li>
-									<!-- End Item Project -->
-									<!-- Item Project and Filter Name -->
-									<li class="item-thumbs col-lg-3 design" data-id="id-1" data-type="icon">
-										<!-- Fancybox - Gallery Enabled - Title - Full Image -->
-										<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Work 2" href="img/works/2.jpg">
-						<span class="overlay-img"></span>
-						<span class="overlay-img-thumb font-icon-plus"></span>
-						</a>
-										<!-- Thumb Image and Description -->
-										<img src="img/works/2.jpg" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
-									</li>
-									<!-- End Item Project -->
-									<!-- Item Project and Filter Name -->
-									<li class="item-thumbs col-lg-3 photography" data-id="id-2" data-type="illustrator">
-										<!-- Fancybox - Gallery Enabled - Title - Full Image -->
-										<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Work 3" href="img/works/3.jpg">
-						<span class="overlay-img"></span>
-						<span class="overlay-img-thumb font-icon-plus"></span>
-						</a>
-										<!-- Thumb Image and Description -->
-										<img src="img/works/3.jpg" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
-									</li>
-									<!-- End Item Project -->
-									<!-- Item Project and Filter Name -->
-									<li class="item-thumbs col-lg-3 photography" data-id="id-2" data-type="illustrator">
-										<!-- Fancybox - Gallery Enabled - Title - Full Image -->
-										<a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Work 4" href="img/works/4.jpg">
-						<span class="overlay-img"></span>
-						<span class="overlay-img-thumb font-icon-plus"></span>
-						</a>
-										<!-- Thumb Image and Description -->
-										<img src="img/works/4.jpg" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
-									</li>
-									<!-- End Item Project -->
-								</ul>
-							</section>
-						</div>
-					</div>
-				</div>
 
 			</div>
 		</section>
-		
+
+		<footer>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-3">
+						<div class="widget">
+							<h5 class="widgetheading">Get in touch with us</h5>
+							<address>
+								<strong>Moderna company Inc</strong><br>
+								 Modernbuilding suite V124, AB 01<br>
+								 Someplace 16425 Earth 
+							</address>
+							<p>
+								<i class="icon-phone"></i> (123) 456-7890 - (123) 555-7891 <br>
+								<i class="icon-envelope-alt"></i> email@domainname.com
+							</p>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="widget">
+							<h5 class="widgetheading">Pages</h5>
+							<ul class="link-list">
+								<li><a href="#">Press release</a></li>
+								<li><a href="#">Terms and conditions</a></li>
+								<li><a href="#">Privacy policy</a></li>
+								<li><a href="#">Career center</a></li>
+								<li><a href="#">Contact us</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="widget">
+							<h5 class="widgetheading">Latest posts</h5>
+							<ul class="link-list">
+								<li><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></li>
+								<li><a href="#">Pellentesque et pulvinar enim. Quisque at tempor ligula</a></li>
+								<li><a href="#">Natus error sit voluptatem accusantium doloremque</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="widget">
+							<h5 class="widgetheading">Flickr photostream</h5>
+							<div class="flickr_badge">
+								<script type="text/javascript" src="https://www.flickr.com/badge_code_v2.gne?count=8&amp;display=random&amp;size=s&amp;layout=x&amp;source=user&amp;user=34178660@N03"></script>
+							</div>
+							<div class="clear">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="sub-footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="copyright">
+								<p>&copy; Moderna Theme. All right reserved.</p>
+								<div class="credits">
+									<!--
+                    All the links in the footer should remain intact.
+                    You can delete the links only if you purchased the pro version.
+                    Licensing information: https://bootstrapmade.com/license/
+                    Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Moderna
+                  -->
+									<a href="https://bootstrapmade.com/">Free Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<ul class="social-network">
+								<li><a href="#" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="#" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="#" data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+								<li><a href="#" data-placement="top" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
+								<li><a href="#" data-placement="top" title="Google plus"><i class="fa fa-google-plus"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
 	</div>
 	<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+
 	<!-- javascript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="js/jquery.js"></script>
+	<script src="js/jquery-3.2.1.min.js"></script>
 	<script src="js/jquery.easing.1.3.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.fancybox.pack.js"></script>
@@ -248,6 +269,7 @@
 	<script src="js/custom.js"></script>
 	<script src="js/keypressed.js"></script>
 
+	<!-- <script src="/js/bootstrap-4.0.0.min.js"></script> -->
 </body>
 
 </html>
