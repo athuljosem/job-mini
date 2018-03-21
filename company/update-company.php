@@ -1,15 +1,11 @@
 <?php
-
-//To Handle Session Variables on This Page
 session_start();
-
-//Including Database Connection From db.php file to avoid rewriting in all files
 require_once("../dbcon.php");
 
-//If user clicked register button
-if(isset($_POST)) {
+//if user clicked update profile button
+if(isset($_POST["submit"])) {
 
-	//Escape Special Characters In String First
+	//Escape Special Characters
 	$companyname = mysqli_real_escape_string($conn, $_POST['companyname']);
 	$contactno = mysqli_real_escape_string($conn, $_POST['contactno']);
 	$website = mysqli_real_escape_string($conn, $_POST['website']);
@@ -21,23 +17,18 @@ if(isset($_POST)) {
 	$city = mysqli_real_escape_string($conn, $_POST['city']);
 
 	$aboutme = mysqli_real_escape_string($conn, $_POST['aboutme']);
-	$name = mysqli_real_escape_string($conn, $_POST['name']);
 
-	//Encrypt Password
-	// $password = base64_encode(strrev(md5($password)));
 
-	//sql query to check if email already exists or not
 	$sql = "SELECT email FROM company WHERE email='$email'";
 	$result = $conn->query($sql);
-
 	//if email not found then we can insert new data
-	if($result->num_rows == 0) {
+	if($result->num_rows > 0) {
 
 			//This variable is used to catch errors doing upload process. False means there is some error and we need to notify that user.
 		$uploadOk = true;
 
 		//Folder where you want to save your image. THIS FOLDER MUST BE CREATED BEFORE TRYING
-		$folder_dir = "uploads/logo/";
+		$folder_dir = "../uploads/company/";
 
 		//Getting Basename of file. So if your file location is Documents/New Folder/myResume.pdf then base name will return myResume.pdf
 		$base = basename($_FILES['image']['name']); 
@@ -80,37 +71,28 @@ if(isset($_POST)) {
 		}
 
 		//If there is any error then redirect back.
-		if($uploadOk == false) {
-			header("Location: companyprofile.php");
-			exit();
-		}
+		// if($uploadOk == false) {
+		// 	header("Location: ../register-company.php");
+		// 	exit();
+		// }
 
-		//sql new registration insert query
-		$sql = "INSERT INTO company(name, companyname, country, state, city, contactno, website, email, password, aboutme, logo) VALUES ('$name', '$companyname', '$country', '$state', '$city', '$contactno', '$website', '$email', '$password', '$aboutme', '$file')";
+	}
+	//Update Query
+	$sql = "UPDATE company SET companyname='$companyname', country='$country', city='$city', state='$state', contactno='$contactno', website='$website', aboutme='$aboutme', logo='$file' WHERE id_company='$_SESSION[companyid]'";
 
-		if($conn->query($sql)===TRUE) {
-
-			//If data inserted successfully then Set some session variables for easy reference and redirect to company login
-			$_SESSION['registerCompleted'] = true;
-			header("Location: companyprofile.php");
-			exit();
-
-		} else {
-			//If data failed to insert then show that error. Note: This condition should not come unless we as a developer make mistake or someone tries to hack their way in and mess up :D
-			echo "Error " . $sql . "<br>" . $conn->error;
-		}
-	} else {
-		//if email found in database then show email already exists error.
-		$_SESSION['registerError'] = true;
-		header("Location: companyprofile.php");
+	if($conn->query($sql) === TRUE) {
+		header("Location: dashboard.php");
 		exit();
+	} else {
+		echo "Error ". $sql . "<br>" . $conn->error;
 	}
 
-	//Close database connection. Not compulsory but good practice.
 	$conn->close();
 
-} else {
-	//redirect them back to register page if they didn't click register button
-	header("Location: companyprofile.php");
+
+} 
+else 
+{
+	header("Location: updatecompany.php");
 	exit();
 }

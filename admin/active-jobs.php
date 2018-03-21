@@ -1,4 +1,6 @@
 <?php include 'header.php' ?>
+<?php $_SESSION['rejected'] = "false"; ?>
+  <?php $_SESSION['pending'] = "false"; ?>
         <!-- page content -->
         <div class="right_col" role="main">
 
@@ -27,7 +29,7 @@
                     </thead>
                     <tbody>
                       <?php
-                      $sql = "SELECT job_post.*, company.companyname FROM job_post INNER JOIN company ON job_post.id_company=company.id_company";
+                      $sql = "SELECT job_post.*, company.companyname FROM job_post INNER JOIN company ON job_post.id_company=company.id_company WHERE active='1'";
                       $result = $conn->query($sql);
                       if($result->num_rows > 0) {
                         $i = 0;
@@ -38,7 +40,7 @@
                         <td><?php echo $row['companyname']; ?></td>
                         <td><?php echo date("d-M-Y", strtotime($row['createdAt'])); ?></td>
                         <td><a href="view-jobpost.php?id=<?php echo $row['id_jobpost']; ?>"><i class="fa fa-arrow-right"></i></a></td>
-                        <td><a href="delete-jobpost.php?id=<?php echo $row['id_jobpost']; ?>"><i class="fa fa-trash"></i></a></td>
+                        <td><a href="delete-jobpost.php?id=<?php echo $row['id_jobpost']; ?> <?php $_SESSION['approved'] == "true" ?> "><i class="fa fa-trash"></i></a></td>
                       </tr>  
                             <?php
                         }

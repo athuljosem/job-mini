@@ -21,10 +21,27 @@ if(isset($_GET)) {
 	 {
 		$sql3 = "DELETE FROM apply_job_post WHERE id_company='$_GET[id]'";
 		if($conn->query($sql)) 
-		{
-		
-		header("Location: approved-company.php");
-		exit();
+		{                  
+
+			if($_SESSION['approved'] == "true")
+		             {
+                        $_SESSION['approved'] = "false";
+		                header("Location: approved-company.php");
+		                exit();
+		              }
+		              elseif($_SESSION['rejected'] == "true")
+		              {
+		              	$_SESSION['rejected'] = "false";
+		              	header("Location: rejected-company.php");
+		                exit();
+		              }
+		              elseif($_SESSION['pending'] == "true")
+		              {
+		              	$_SESSION['pending'] = "false";
+		              	header("Location: pending-company.php");
+		                exit();
+		              }
+
 	    } 
 	 }
     }

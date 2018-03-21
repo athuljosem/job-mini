@@ -1,4 +1,6 @@
   <?php include 'header.php' ?>
+  <?php $_SESSION['approved'] = "false"; ?>
+  <?php $_SESSION['rejected'] = "false"; ?>
         <!-- page content -->
         <div class="right_col" role="main">
          <div class="row">
@@ -56,8 +58,8 @@
                           }
                         ?>                          
                         </td>
-                        <td><a href="delete-company.php?id=<?php echo $row['id_company']; ?>"><i class="fa fa-trash"></i></a></td>
-                      </tr>  
+                        <td><a href="delete-company.php?id=<?php echo $row['id_company']; ?> <?php $_SESSION['pending'] = "true" ?> "><i class="fa fa-trash"></i></a></td>
+                      </tr>   ?>
                      <?php
                         }
                       }
