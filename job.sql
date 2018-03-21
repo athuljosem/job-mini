@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 21, 2018 at 03:55 AM
+-- Generation Time: Mar 21, 2018 at 05:10 PM
 -- Server version: 5.5.28
 -- PHP Version: 5.3.5
 
@@ -51,16 +51,15 @@ CREATE TABLE IF NOT EXISTS `apply_job` (
   `id_jobpost` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   PRIMARY KEY (`id_applyjob`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `apply_job`
 --
 
 INSERT INTO `apply_job` (`id_applyjob`, `id_company`, `id_jobpost`, `id_user`) VALUES
-(10, 1, 2, 1),
-(11, 1, 3, 1),
-(12, 1, 1, 1);
+(13, 4, 13, 5),
+(14, 4, 14, 5);
 
 -- --------------------------------------------------------
 
@@ -85,14 +84,16 @@ CREATE TABLE IF NOT EXISTS `company` (
   `active` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_company`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `company`
 --
 
 INSERT INTO `company` (`id_company`, `companyname`, `contactno`, `website`, `companytype`, `email`, `password`, `country`, `state`, `city`, `aboutme`, `logo`, `createdAt`, `active`) VALUES
-(1, 'google', '1234567890', 'www.google.com', NULL, 'google@gmail.com', '1234', 'india', 'kerala', 'ernakulam', 'well known company', NULL, '2018-02-22 23:13:59', 1);
+(1, 'google', '1234567890', 'www.google.com', NULL, 'google@gmail.com', '1234', 'india', 'kerala', 'ernakulam', 'well known company', NULL, '2018-02-22 23:13:59', 1),
+(3, 'TCS', NULL, NULL, NULL, 'tcs@gmail.com', '1234', NULL, NULL, NULL, NULL, NULL, '2018-03-21 09:45:12', 0),
+(4, 'lcc', NULL, NULL, NULL, 'lcckothamangalam@gmail.com', '123', NULL, NULL, NULL, NULL, NULL, '2018-03-21 18:44:48', 0);
 
 -- --------------------------------------------------------
 
@@ -109,16 +110,15 @@ CREATE TABLE IF NOT EXISTS `company_mailbox` (
   `mail_content` varchar(1000) CHARACTER SET utf8 NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_mail`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `company_mailbox`
 --
 
 INSERT INTO `company_mailbox` (`id_mail`, `id_company`, `id_user`, `id_jobpost`, `mail_title`, `mail_content`, `createdAt`) VALUES
-(1, 1, NULL, 2, 'Test Title', 'Testing', '2018-03-17 15:04:26'),
-(2, 1, NULL, 2, 'AAA', '<p>abc</p>', '2018-03-17 15:39:11'),
-(3, 1, NULL, 1, 'test 2', '<p>test 2</p>', '2018-03-17 15:39:45');
+(9, 4, 5, NULL, 'db devloper', '<p>you can come on 25 march</p>', '2018-03-21 19:08:10'),
+(10, 4, NULL, 14, 'interview', '<p style="text-align: left;">interview scheduled on 30 march</p>', '2018-03-21 19:09:38');
 
 -- --------------------------------------------------------
 
@@ -134,21 +134,22 @@ CREATE TABLE IF NOT EXISTS `job_post` (
   `minimumsalary` varchar(255) NOT NULL,
   `maximumsalary` varchar(255) NOT NULL,
   `experience` varchar(255) NOT NULL,
-  `qualification` varchar(255) NOT NULL,
+  `ug_course` varchar(255) DEFAULT NULL,
+  `ug_mark` int(11) DEFAULT NULL,
+  `pg_course` varchar(255) DEFAULT NULL,
+  `pg_mark` int(11) DEFAULT NULL,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `active` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_jobpost`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `job_post`
 --
 
-INSERT INTO `job_post` (`id_jobpost`, `id_company`, `jobtitle`, `description`, `minimumsalary`, `maximumsalary`, `experience`, `qualification`, `createdAt`, `active`) VALUES
-(1, 1, 'bpo', '<p>well-knowlede in java,php and dbms</p>', '20000', '50000', '0', 'mca', '2018-02-24 16:54:44', 0),
-(2, 1, 'manager', '<p>The managing post of ernakulam branch</p>', '40000', '50000', '5', 'btech', '2018-03-01 11:40:21', 0),
-(3, 1, 'Test Job', '<p>This is a test job</p>', '10000', '15000', '0', 'mca', '2018-03-19 22:03:42', 0),
-(4, 1, 'test2', '<p>adf</p>', '1234', '13243', '0', 'mca', '2018-03-19 22:09:05', 0);
+INSERT INTO `job_post` (`id_jobpost`, `id_company`, `jobtitle`, `description`, `minimumsalary`, `maximumsalary`, `experience`, `ug_course`, `ug_mark`, `pg_course`, `pg_mark`, `createdAt`, `active`) VALUES
+(13, 4, 'website designer', '<p>those who have experince in website design can apply for the job</p>', '25000', '35000', '2', '', NULL, '', NULL, '2018-03-21 18:54:33', 1),
+(14, 4, 'Database developer', '<p>those who are interested in managing database can apply</p>', '30000', '40000', '0', ' Bsc CS-COMPUTER', NULL, ' MCA-Computer', NULL, '2018-03-21 19:05:13', 1);
 
 -- --------------------------------------------------------
 
@@ -177,7 +178,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `active` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `users`
@@ -186,7 +187,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`user_id`, `fname`, `lname`, `email`, `password`, `address`, `city`, `state`, `country`, `contactno`, `qualification`, `stream`, `passingyear`, `dob`, `age`, `designation`, `photo`, `active`) VALUES
 (1, 'arjun', 't k', 'arjuntk6258@gmail.com', '1234', 'Thazhathetharayil house\r\nkulayettikkara p.o\r\nkeechery', 'ernakulam', 'kerala', 'india', '9496633406', 'mca', 'computer application', '2018-04-03', '1994-09-13', '24', 'student', '5aaf8202cfff6.jpg', 1),
 (2, 'athul', 'jose', 'athuljosemenachery@gmail.com', '123', '', 'ernakulam', 'kerala', 'india', '', 'mca', '', '', '', '', '', '5a9c3bffb8a45.png', 1),
-(4, 'test', 'test', 'test@a.com', '1234', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, 0);
+(4, 'test', 'test', 'test@a.com', '1234', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, 0),
+(5, 'vishnu', 's', '7694vishnus@gmail.com', '1234', 'Nellikuzhi', 'Ernakulam', 'kerala', NULL, '9400827569', 'MCA', 'Computer', '2018-11-20', '1994-06-07', '23', 'Web designer', '5ab25ddfcf387.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -203,14 +205,14 @@ CREATE TABLE IF NOT EXISTS `user_mailbox` (
   `mail_content` text NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_usermail`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `user_mailbox`
 --
 
 INSERT INTO `user_mailbox` (`id_usermail`, `id_user`, `id_company`, `id_jobpost`, `mail_title`, `mail_content`, `createdAt`) VALUES
-(1, 1, 1, NULL, 'test', 't', '2018-03-19 19:43:42');
+(2, 5, 4, NULL, 'DB devloper', 'i would like to have an appointment i', '2018-03-21 19:06:49');
 
 -- --------------------------------------------------------
 
@@ -224,19 +226,21 @@ CREATE TABLE IF NOT EXISTS `user_qualification` (
   `q_level` varchar(200) NOT NULL,
   `qualification` varchar(200) NOT NULL,
   `subject` varchar(200) NOT NULL,
-  `institution` varchar(200) NOT NULL,
-  `university` varchar(200) NOT NULL,
-  `percentage` float NOT NULL,
-  `grade` varchar(2) NOT NULL,
-  `passout` int(11) NOT NULL,
-  `register_number` int(100) NOT NULL,
+  `institution` varchar(200) DEFAULT NULL,
+  `university` varchar(200) DEFAULT NULL,
+  `percentage` float DEFAULT NULL,
+  `grade` varchar(2) DEFAULT NULL,
+  `passout` int(11) DEFAULT NULL,
+  `register_number` int(100) DEFAULT NULL,
   PRIMARY KEY (`q_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `user_qualification`
 --
 
 INSERT INTO `user_qualification` (`q_id`, `user_id`, `q_level`, `qualification`, `subject`, `institution`, `university`, `percentage`, `grade`, `passout`, `register_number`) VALUES
-(4, 1, 'UG', 'BSc', 'Computer Science', 'FISAT', 'MGU', 61, 'C', 2015, 8000363),
-(5, 1, 'PG', 'MCA', 'Computer Applications', 'FISAT', 'MGU', 71, 'B', 2018, 700082);
+(9, 5, 'UG', 'Bsc CS', 'COMPUTER', 'IGC', 'MG', 65, 'B', 2015, 12156744),
+(10, 5, 'PG', 'MCA', 'Computer', 'FISAT', 'MG', 75, 'B+', 2018, 700115),
+(11, 0, 'UG', 'BCA', 'Computer Application', NULL, NULL, NULL, NULL, NULL, NULL),
+(12, 0, 'PG', 'MTech', 'Computer Science', NULL, NULL, NULL, NULL, NULL, NULL);
