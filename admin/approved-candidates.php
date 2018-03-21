@@ -50,7 +50,7 @@
                             ?>
                                        
                         </td>
-                        <td><a href="delete-company.php?id=<?php echo $row['user_id']; ?>"><i class="fa fa-trash"></i> </a></td>
+                        <td><a href="delete-candidate.php?id=<?php echo $row['user_id']; ?>"><i class="fa fa-trash"></i> </a></td>
                       </tr>  
                      <?php
                         }

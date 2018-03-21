@@ -38,7 +38,7 @@
                         <td><?php echo $row['companyname']; ?></td>
                         <td><?php echo date("d-M-Y", strtotime($row['createdAt'])); ?></td>
                         <td><a href="view-jobpost.php?id=<?php echo $row['id_jobpost']; ?>"><i class="fa fa-arrow-right"></i></a></td>
-                        <td><a href="delete-job-post.php?id=<?php echo $row['id_jobpost']; ?>"><i class="fa fa-trash"></i></a></td>
+                        <td><a href="delete-jobpost.php?id=<?php echo $row['id_jobpost']; ?>"><i class="fa fa-trash"></i></a></td>
                       </tr>  
                             <?php
                         }

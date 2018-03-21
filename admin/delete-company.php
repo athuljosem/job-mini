@@ -16,14 +16,14 @@ if(isset($_GET)) {
 	$sql = "DELETE FROM company WHERE id_company='$_GET[id]'";
 	if($conn->query($sql)) 
 	{
-		$sql = "DELETE FROM job_post WHERE id_company='$_GET[id]'";
-	if($conn->query($sql))
+		$sql2 = "DELETE FROM job_post WHERE id_company='$_GET[id]'";
+	if($conn->query($sql2))
 	 {
-		$sql1 = "DELETE FROM apply_job_post WHERE id_company='$_GET[id]'";
-		if($conn->query($sql1)) 
+		$sql3 = "DELETE FROM apply_job_post WHERE id_company='$_GET[id]'";
+		if($conn->query($sql)) 
 		{
 		
-		header("Location: dashboard.php");
+		header("Location: approved-company.php");
 		exit();
 	    } 
 	 }

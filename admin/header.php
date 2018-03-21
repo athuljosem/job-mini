@@ -73,7 +73,7 @@ require_once("../dbcon.php");?>
                     </li>
                   <li><a><i class="fa fa-check-square"></i> Pending <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="pending-candidate.php">Candidates</a></li>
+                      <li><a href="pending-candidates.php">Candidates</a></li>
                       <li><a href="pending-company.php">Company</a></li>
                       <li><a href="pending-jobpost.php">Jobpost</a></li>
                      

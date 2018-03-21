@@ -45,7 +45,7 @@
                           if($row['active'] == '0') {
                            
                             ?>
-                            <a class="btn btn-default bg-red" href="reject-company.php?id=<?php echo $row['id_company']; ?>">Reject</a> <a class="btn btn-default bg-green" href="add-company.php?id=<?php echo $row['id_company']; ?>">Approve</a>
+                            <a class="btn btn-default bg-red" href="reject_company.php?id=<?php echo $row['id_company']; ?>">Reject</a> <a class="btn btn-default bg-green" href="add-company.php?id=<?php echo $row['id_company']; ?>">Approve</a>
                             <?php
                           } else if ($row['active'] == '2') {
                             ?>
