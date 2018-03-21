@@ -32,17 +32,16 @@
                     <b><?php echo $row['qualification'];?></b> (<?php echo $row['subject'];?>)
                     <div style="float: right;">
                       <button id="q_edit" class="btn btn-info"><i class="fa fa-edit"></i></button>
-                      <button id="q_delete" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                      <button class="btn btn-danger q_delete" data-id="<?php echo $row['q_id'] ?>"><i class="fa fa-trash"></i></button>
                     </div>
                     <div class="clearfix"></div>
                   </div>
                   <div class="panel-body ">
-                
-                      <b><?= $row['q_level']?></b>
-                      <span class="label label-danger"><?php echo $row['percentage'];?>%</span ><br>
-                      <b>Grade: <?php echo $row['grade'];?> </b><br>
-                      <b><?php echo $row['institution'];?></b>(<?php echo $row['university'];?>) <br>
-                      <i>Passout-<?php echo $row['passout'];?></i> 
+                    <b><?= $row['q_level']?></b>
+                    <span class="label label-danger"><?php echo $row['percentage'];?>%</span ><br>
+                    <b>Grade: <?php echo $row['grade'];?> </b><br>
+                    <b><?php echo $row['institution'];?></b>(<?php echo $row['university'];?>) <br>
+                    <i>Passout-<?php echo $row['passout'];?></i> 
                   </div> 
                 </div>
               </div>
@@ -132,3 +131,24 @@
 
 <?php include 'footer.php' ?>
 
+<script>
+    $('.q_delete').click(function(){
+        var id = $(this).attr('data-id');
+
+        var r = confirm("Press a button!");
+      if (r == true) {
+          $.ajax({
+              url: 'deletequalifictions.php',//make a  file yourself 
+              type: 'POST',
+              data: {id: id},
+              success:function(response){
+                  if (response==1) {
+                      window.location = location;
+                  }else{
+                      console.log(response);
+                  }
+              }
+          });
+      }
+    });    
+</script>
