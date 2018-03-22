@@ -37,18 +37,18 @@
 					</div>
 					<div class="navbar-collapse collapse ">
 						<ul class="nav navbar-nav">
-							<li class="active"><a href="index.html">Home</a></li>
+							<li class="active"><a href="index.php">Home</a></li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Features <b class=" icon-angle-down"></b></a>
 								<ul class="dropdown-menu">
 									<div class="panel panel-info" style="margin-bottom: 0px;">
-										<li><a href="register.php">Typography</a></li>
-										<li><a href="components.html">Components</a></li>
-										<li><a href="pricingbox.html">Pricing box</a></li>
+										<li><a href="">Typography</a></li>
+										<li><a href="">Components</a></li>
+										<li><a href="">Pricing box</a></li>
 									</div>
 								</ul>
 							</li>
-							<li><a href="contact.html">Contact</a></li>
+							<li><a href="">Contact</a></li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Login <b class="icon-angle-down"></b></a>
 								<ul class="dropdown-menu" style="min-width: 80px;">
