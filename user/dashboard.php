@@ -18,39 +18,44 @@ $ug_branch="*";
 $pg_branch="*";
                         //FIX:There is a more easier way to do this Should fix it!!
 
-    $sql = "SELECT qualification,subject FROM user_qualification WHERE user_id='$_SESSION[userid]' AND q_level='UG'";
-    $result = $conn->query($sql);
+    $sql_ug = "SELECT qualification1,percentage FROM user_qualification WHERE user_id='$_SESSION[userid]' AND q_level='UG'";
+    $result_ug = $conn->query($sql_ug);
 
                       //If Job Post exists then display details of post
-    if($result->num_rows > 0) {
-      while($row = $result->fetch_assoc()) 
+    if($result_ug->num_rows > 0) {
+      while($row_ug = $result_ug->fetch_assoc()) 
       {
-        $ug_course=$row["qualification"];
-        $ug_branch=$row["subject"];
+        $ug_course=$row_ug["qualification1"];
+        $ug_branch=$row_ug["percentage"];
       }
     }
 
-$sql1 = "SELECT qualification,subject FROM user_qualification WHERE user_id='$_SESSION[userid]' AND q_level='PG'";
-    $result1 = $conn->query($sql1);
+$sql_pg = "SELECT percentage,qualification1 FROM user_qualification WHERE user_id='$_SESSION[userid]' AND q_level='PG'";
+    $result_pg = $conn->query($sql_pg);
 
                       //If Job Post exists then display details of post
-    if($result1->num_rows > 0) {
-      while($row1 = $result1->fetch_assoc()) 
+    if($result_pg->num_rows > 0) {
+      while($row_pg = $result_pg->fetch_assoc()) 
       {
-        $pg_course=$row1["qualification"];
-        $pg_branch=$row1["subject"];
-      }
-    }
+        $pg_course=$row_pg["qualification1"];
+        $pg_branch=$row_pg["percentage"];
+      
 
     $_SESSION['leftpanel'] = 'dashboard';
 
-    $sql = "SELECT * FROM job_post WHERE pg_course LIKE '%$pg_course-$pg_branch%' AND ug_course LIKE '%$ug_course-$ug_branch%' and active='1' ";
+    //$sql = "SELECT * FROM job_post WHERE pg_course LIKE '%$pg_course-$pg_branch%' AND ug_course LIKE '%$ug_course-$ug_branch%' and active='1' ";
+    //$result = $conn->query($sql);
+
+
+    $sql = "SELECT * FROM job_post WHERE active='1' ";
     $result = $conn->query($sql);
 
                       //If Job Post exists then display details of post
     if($result->num_rows > 0) {
       while($row = $result->fetch_assoc()) 
       {
+        if($row['pg_mark']>$row_pg['percentage'])
+        {
         $sql1 = "SELECT * FROM apply_job WHERE id_jobpost='$row[id_jobpost]' AND id_user='$_SESSION[userid]' ";
         $result1 = $conn->query($sql1);
         ?>
@@ -111,8 +116,11 @@ $sql1 = "SELECT qualification,subject FROM user_qualification WHERE user_id='$_S
           
           <?php
         }
+        }
       }
     }
+  }
+}
     else
       echo "Update your qualifications to list your qualified jobs here.";
     ?>

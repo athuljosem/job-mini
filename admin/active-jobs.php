@@ -29,7 +29,7 @@
                     </thead>
                     <tbody>
                       <?php
-                      $sql = "SELECT job_post.*, company.companyname FROM job_post INNER JOIN company ON job_post.id_company=company.id_company WHERE active='1'";
+                      $sql = "SELECT job_post.*, company.companyname FROM job_post INNER JOIN company ON job_post.id_company=company.id_company WHERE job_post.active='1'";
                       $result = $conn->query($sql);
                       if($result->num_rows > 0) {
                         $i = 0;
