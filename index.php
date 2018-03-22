@@ -75,30 +75,47 @@
 								<li>
 									<img src="img/slides/1.jpg" alt="" />
 									<div class="flex-caption">
-										<h3>Modern Design</h3>
-										<p>Duis fermentum auctor ligula ac malesuada. Mauris et metus odio, in pulvinar urna</p>
-										<a href="#" class="btn btn-theme">Learn More</a>
+										<h3>Own the Success</h3>
+										<p>At JOB4U, we help you discover the right opportunities. We provide you the platform to connect with niche companies by showcasing your skills and experiences which would define you as a warranting asset to the organisation. </p>
+										<!-- <a href="#" class="btn btn-theme">Learn More</a> -->
 									</div>
 								</li>
 								<li>
 									<img src="img/slides/2.jpg" alt="" />
 									<div class="flex-caption">
-										<h3>Fully Responsive</h3>
-										<p>Sodales neque vitae justo sollicitudin aliquet sit amet diam curabitur sed fermentum.</p>
-										<a href="#" class="btn btn-theme">Learn More</a>
+										<h3>We are what you are</h3>
+										<p>Smarter hiring process commence with perfectly contoured process. We exploit the cognizance of our industry experts in determining candidate suitability based on their experiences and skills.</p>
+										<!-- <a href="#" class="btn btn-theme">Learn More</a> -->
 									</div>
 								</li>
 								<li>
 									<img src="img/slides/3.jpg" alt="" />
 									<div class="flex-caption">
-										<h3>Clean & Fast</h3>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit donec mer lacinia.</p>
-										<a href="#" class="btn btn-theme">Learn More</a>
+										<h3>Get Hired</h3>
+										<p>Executive search at Recwire is done through a combination of human curation and precision of client requirement. Which has been time saving and has proven to deliver smart heads to reputed firms. Our dexterity of being able to streamline high-quality individuals has gained us an impressive reputation among employers. </p>
+										<!-- <a href="#" class="btn btn-theme">Learn More</a> -->
 									</div>
 								</li>
 							</ul>
 						</div>
 						<!-- end slider -->
+					</div>
+				</div>
+			</div>
+		</section>
+
+<section class="callaction">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="big-cta">
+							<div class="cta-text">
+								<h2> Make way for the New</h2>
+								<p>We take pride in being known as the smart chip among Talent Advocates of the IT industry. Our profound understanding of the employer’s requirement precision makes us maven in talent acquisition. Our dedicated team of specialists with their impressive depth of knowledge and connect within the industry sectors enable them to consign the right person in the right job.</p>
+
+<p>We mean business when we say that we connect inevitable talents with the most innovative employers. Our prime focus also defines us as providers’ of top notch services to both employers and candidates. We work on a simple yet state of the art platform which brings employee attraction and employer attention followed by placement into one place. </p>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -117,6 +134,7 @@
 				</div>
 			</div>
 		</section>
+
 		<section id="content">
 			<div class="container">
 				

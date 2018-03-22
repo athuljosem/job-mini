@@ -87,59 +87,64 @@ if($result->num_rows > 0) {
               <!-- menu profile quick info -->
               <div class="profile">
                 <div class="profile_pic">
-                  <?php if (file_exists("../uploads/user/" + $row['photo'])): ?>
+                  <?php if (file_exists("../uploads/user/".$row['photo'])) 
+                  { ?>
                     <img src="../uploads/user/<?php echo $row['photo']; ?>" alt="..." class="img-circle profile_img">
-                  <?php else: ?>
+                    <?php 
+                  }
+                  else 
+                  {
+                    ?>
                     <img src="../uploads/user/default.jpg" alt="..." class="img-circle profile_img">
-                  <?php endif ?>
-                </div>
-                <div class="profile_info">
-                  <span>Welcome,</span>
-                  <h2> <?php echo $user; ?></h2>
-
-                </div>
-                <div class="clearfix"></div>
-                <div style="margin-top: 10px;">
-                  <p style="margin-left: 12px;"> <?php echo $email; ?> </p>
-                </div>
-              </div>
-              <!-- /menu profile quick info -->
-
-              <br />
-
-              <!-- sidebar menu -->
-              <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-                <div class="menu_section">
-                  <h3>General</h3>
-                  <ul class="nav side-menu">
-                    <li><a href="dashboard.php"><i class="fa fa-home"></i> Dashboard </a>
-
-                      <li><a href="profile.php"><i class="fa fa-edit"></i> Edit Profile </a>
-
-                      </li>
-                      <li><a href="myapplication.php"><i class="fa fa-tasks"></i> Applied Jobs </a>
-
-                      </li>
-                      <li><a href="qualification.php"><i class="fa fa-credit-card"></i> Qualification </a>
-
-                      </li>
-                      <li><a href="view_jobpost.php"><i class="fa fa-desktop"></i> Jobs </a>
-
-                      </li>
-                      <li><a href="mailbox.php"><i class="fa fa-inbox"></i> Mailbox </a>
-
-                      </li>
-
-
-
-
-                    </ul>
+                    <?php } ?>
                   </div>
+                  <div class="profile_info">
+                    <span>Welcome,</span>
+                    <h2> <?php echo $user; ?></h2>
 
+                  </div>
+                  <div class="clearfix"></div>
+                  <div style="margin-top: 10px;">
+                    <p style="margin-left: 12px;"> <?php echo $email; ?> </p>
+                  </div>
                 </div>
-                <!-- /sidebar menu -->
+                <!-- /menu profile quick info -->
 
-                <!-- /menu footer buttons -->
+                <br />
+
+                <!-- sidebar menu -->
+                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                  <div class="menu_section">
+                    <h3>General</h3>
+                    <ul class="nav side-menu">
+                      <li><a href="dashboard.php"><i class="fa fa-home"></i> Dashboard </a>
+
+                        <li><a href="profile.php"><i class="fa fa-edit"></i> Edit Profile </a>
+
+                        </li>
+                        <li><a href="myapplication.php"><i class="fa fa-tasks"></i> Applied Jobs </a>
+
+                        </li>
+                        <li><a href="qualification.php"><i class="fa fa-credit-card"></i> Qualification </a>
+
+                        </li>
+                        <li><a href="view_jobpost.php"><i class="fa fa-desktop"></i> Jobs </a>
+
+                        </li>
+                        <li><a href="mailbox.php"><i class="fa fa-inbox"></i> Mailbox </a>
+
+                        </li>
+
+
+
+
+                      </ul>
+                    </div>
+
+                  </div>
+                  <!-- /sidebar menu -->
+
+                  <!-- /menu footer buttons -->
             <!-- <div class="sidebar-footer hidden-small">
               <a data-toggle="tooltip" data-placement="top" title="Settings">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
@@ -301,10 +306,10 @@ if($result->num_rows > 0) {
             </nav>
           </div>
         </div>
-        <!-- /top navigation
-
+        <!-- /top navigation -->
         <?php
-}
-}
-?>
-          <!--pagecontet-->
+      }
+    }
+    ?>
+
+       <!-- pagecontet  -->

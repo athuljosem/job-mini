@@ -53,8 +53,9 @@ if($result->num_rows > 0) {
                     </li>
                   </ul>
 
-                  <!-- <a href="#editprofile" class="to_register" class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a> -->
-                  <a href="#editprofile">edit profile </a>
+                  <!-- <a href="uploadresume.php"  class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Upload Resume</a><br> -->
+
+                  <!-- <a href="#editprofile">edit profile </a> -->
                   <br />
 
                   <!-- start skills -->
