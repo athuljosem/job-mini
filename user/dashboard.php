@@ -113,6 +113,8 @@ $sql1 = "SELECT qualification,subject FROM user_qualification WHERE user_id='$_S
         }
       }
     }
+    else
+      echo "Update your qualifications to list your qualified jobs here.";
     ?>
   </div>
   </div>

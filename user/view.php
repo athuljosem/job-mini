@@ -46,10 +46,14 @@
               <div class="clearfix"></div>
               <hr>
               <div>
-                <p><span class="margin-right-10"><i class="fa fa-location-arrow "></i> <?php echo $row['experience']; ?> Years Experience</span>  <i class="fa fa-calendar" ></i> <?php echo date("d-M-Y", strtotime($row['createdAt'])); ?></p>              
+                <p><span class="margin-right-10"><i class="fa fa-location-arrow "></i> <?php echo $row['experience']; ?> Years Experience</span>  <i class="fa fa-calendar" ></i> <?php echo date("d-M-Y", strtotime($row['createdAt'])); ?></p> 
+                <?php if ($row['ug_mark']!=NULL) {?><br><i class="fa fa-pie-chart" ></i> <?php echo "Minimum percentage in UG".$row['ug_mark']; }?>
+                <?php if ($row['ug_course']!=NULL) {?><br><i class="fa fa-university" ></i> <?php echo "Eligible UG Courses :-".$row['ug_course']; }?>
+                <?php if ($row['pg_mark']!=NULL) {?><br><i class="fa fa-pie-chart" ></i> <?php echo "Minimum percentage in PG".$row['pg_mark']; }?>    
+                <?php if ($row['pg_course']!=NULL) {?><br><i class="fa fa-university" ></i> <?php echo "Eligible PG Courses :-".$row['pg_course']; }?>         
               </div>
               <div>
-                <?php echo stripcslashes($row['description']); ?>
+               <br> <?php echo stripcslashes($row['description']); ?>
               </div>
 
               <div class="text-right">

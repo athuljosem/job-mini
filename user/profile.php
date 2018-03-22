@@ -193,7 +193,7 @@ if($result->num_rows > 0) {
                               <input type="text" class="form-control" id="designation" name="designation" placeholder="Designation" value="<?php echo $row['designation']; ?>">
                             </div>
                             <div class="form-group">
-                              <label>image</label>
+                              <label>Profile Image</label>
                               <input type="file" name="image" id="image" class=" input" >
                             </div>
                             <div class="text-center">
