@@ -66,6 +66,10 @@ if($result->num_rows > 0) {
                   $pg_course="";
                   $pg_branch="";
                   $pg_percentage="";
+                  $sslc_course="";
+                  $sslc_percentage="";
+                  $plustwo_subject="";
+                  $plustwo_percentage="";
                   $sql1 = "SELECT * FROM user_qualification WHERE user_id='$_SESSION[userid]' AND q_level='UG'";
                   $result1 = $conn->query($sql1);
 
@@ -95,28 +99,58 @@ if($result->num_rows > 0) {
                     }
                   }
                   ?>
+
+                <?php
+                  $sql3 = "SELECT * FROM user_qualification WHERE user_id='$_SESSION[userid]' AND q_level='SSLC'";
+                  $result3 = $conn->query($sql3);
+
+                      //If Job Post exists then display details of post
+                  if($result3->num_rows > 0) 
+                  {
+                    while($row3 = $result3->fetch_assoc()) 
+                    {
+                      $sslc_course=$row3["qualification"];
+                      $sslc_percentage=$row3["percentage"];
+                    }
+                  }
+                  ?>
+
+                  <?php
+                  $sql4 = "SELECT * FROM user_qualification WHERE user_id='$_SESSION[userid]' AND q_level='+2'";
+                  $result4 = $conn->query($sql4);
+
+                      //If Job Post exists then display details of post
+                  if($result4->num_rows > 0) 
+                  {
+                    while($row4 = $result4->fetch_assoc()) 
+                    {
+                      $plustwo_subject=$row4["subject"];
+                      $plustwo_percentage=$row4["percentage"];
+                    }
+                  }
+                  ?>
                   <h4>Skills</h4>
                   <ul class="list-unstyled user_data">
                     <li>
-                      <p>SSLC</p>
+                      <p><b>SSLC-</b><?php echo $sslc_percentage; ?>%</p>
                       <div class="progress progress_sm">
-                        <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50"></div>
+                        <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="0"></div>
                       </div>
                     </li>
                     <li>
-                      <p>+2</p>
+                      <p><b>Plus Two-</b><?php echo $plustwo_subject."-".$plustwo_percentage; ?>%</p>
                       <div class="progress progress_sm">
-                        <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="70"></div>
+                        <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="0"></div>
                       </div>
                     </li>
                     <li>
-                      <p>UG-<?php echo $ug_percentage; ?>%</p>
+                      <p><b>UG-</b><?php echo $ug_course." ".$ug_branch."-".$ug_percentage; ?>%</p>
                       <div class="progress progress_sm">
                         <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="<?php echo $ug_percentage; ?>"></div>
                       </div>
                     </li>
                     <li>
-                      <p>PG-<?php echo $pg_percentage; ?>%</p>
+                      <p><b>PG-</b><?php echo $pg_course." ".$pg_branch."-".$pg_percentage; ?>%</p>
                       <div class="progress progress_sm">
                         <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="<?php echo $pg_percentage; ?>"></div>
                       </div>
