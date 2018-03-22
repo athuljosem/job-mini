@@ -81,22 +81,22 @@ require_once("../dbcon.php");?>
               <h3>General</h3>
               <ul class="nav side-menu">
                 <li><a href="dashboard.php"><i class="fa fa-home"></i> Dashboard </a>
-                  
+
                 </li>
                 <li><a href="companyprofile.php"><i class="fa fa-edit"></i> My company </a>
 
                 </li>
                 <li><a href="createjob.php"><i class="fa fa-edit"></i> Create Job Post </a>
-                 
+
                 </li>
                 <li><a href="view_jobpost.php"><i class="fa fa-desktop"></i> My Jobs Posts </a>
-                  
+
                 </li>
                 <li><a href="jobapplication.php"><i class="fa fa-briefcase"></i> Jobs Application  </a>
 
                 </li>
                 <li><a href="mailbox.php"><i class="fa fa-envelope"></i> Mailbox </a>
-                 
+
                 </li>
                 
                 
@@ -142,7 +142,7 @@ require_once("../dbcon.php");?>
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    
+
                     <li>
                       <a href="javascript:;">
                         <span class="badge bg-red pull-right">50%</span>
@@ -157,60 +157,55 @@ require_once("../dbcon.php");?>
                 <li role="presentation" class="dropdown">
                   <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                     <i class="fa fa-envelope-o"></i>
-                    <span class="badge bg-green">6</span>
-                  </a>
-                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
+                    <?php $_SESSION['notification_count']=0;?>
+                    <?php
+                    if($_SESSION['notification_count']>=1) 
+                      {?>
+                        <span class="badge bg-green">
+                          <?php echo $_SESSION['notification_count'];?>
+
                         </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
+                        <?php
+                      }
+                      ?>
+                    </a>
+                    <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                     <?php
+                     $sql1 = "SELECT * FROM user_mailbox WHERE id_company=$_SESSION[companyid] ORDER BY createdAt DESC LIMIT 5";
+
+                     $_SESSION['notification_count'] = NULL;
+                     $result1 = $conn->query($sql1);
+                     if($result1->num_rows > 0) 
+                     {
+                      while($row1 = $result1->fetch_assoc()) 
+                      {
+                        $sql2 = "SELECT * FROM users WHERE user_id=$row1[id_user]";
+                        $result2 = $conn->query($sql2);
+                        $row2 = $result2->fetch_assoc();
+
+
+                        ?>
+                        <li>
+                          <a>
+                            <!-- <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span> -->
+                            <span>
+                              <span><a href="mailbox.php"><b><?php echo $row2['fname']." ".$row2['lname']; ?></b></a></span>
+                              <span class="time"><?php echo substr($row1['createdAt'],10,6); ?></span>
+                            </span>
+                            <span class="message">
+                              <?php echo $row1['mail_title']; ?>
+                            </span>
+                          </a>
+                        </li>
+                        <?php
+
+                      }
+                    }
+
+                    ?>
                     <li>
                       <div class="text-center">
-                        <a>
+                        <a href="mailbox.php">
                           <strong>See All Alerts</strong>
                           <i class="fa fa-angle-right"></i>
                         </a>
