@@ -29,6 +29,33 @@
             </tr>
           </thead>
           <tbody>
+            <?php
+                        $sql = "SELECT * FROM apply_job WHERE id_jobpost='$_GET[id]'";
+                        $result = $conn->query($sql);
+
+                        if($result->num_rows > 0) {
+                         while($row = $result->fetch_assoc()) 
+                         {
+                          $sql1 = "SELECT * FROM users WHERE user_id='$row[id_user]'";
+                          $result1 = $conn->query($sql1);
+                          $row1 = $result1->fetch_assoc();
+                          
+                          
+                          ?>
+                          <tr>
+                           
+                            <td><?php echo $row1['fname'] ; ?> <?php echo $row1['lname']; ?></td>
+                            <td><?php echo $row1['fname'] ; ?> <?php echo $row1['lname']; ?></td>
+                            <td><?php echo $row1['fname'] ; ?> <?php echo $row1['lname']; ?></td>
+                            <td><?php echo $row1['fname'] ; ?> <?php echo $row1['lname']; ?></td>
+                            <td><?php echo $row1['fname'] ; ?> <?php echo $row1['lname']; ?></td>
+                            <td><a href="view.php?id=<?php echo $row['id_jobpost']; ?>"><i class="fa fa-arrow-circle-right"></i></a></td>
+                          </tr>
+                          <?php
+                          
+                        }
+                      }
+                      ?>
             <tr>
               <td>Tiger Nixon</td>
               <td>System Architect</td>
@@ -44,10 +71,6 @@
     </div>
   </div>
 </div>
-
-
-<?php include 'footer.php' ?>
-
 <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
@@ -63,3 +86,7 @@
 <script src="../vendors/jszip/dist/jszip.min.js"></script>
 <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
 <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+
+<?php include 'footer.php' ?>
+
+

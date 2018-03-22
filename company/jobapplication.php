@@ -54,7 +54,7 @@
                   <i class="glyphicon glyphicon-briefcase yellow"></i>
                 </a>
                 <div class="media-body ">
-                  <a class="title" href="viewapply.php?id=<?php echo $row['id_jobpost']; ?>"><h2><?php echo $row3['jobtitle']; ?></h2></a>
+                  <a class="title" href="viewusers.php?id=<?php echo $row['id_jobpost']; ?>"><h2><?php echo $row3['jobtitle']; ?></h2></a>
                   <h1><?php echo $total1; ?></h1> 
                   
                 </div>
