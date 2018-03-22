@@ -194,13 +194,13 @@
 						<div class="widget">
 							<h5 class="widgetheading">Get in touch with us</h5>
 							<address>
-								<strong>Moderna company Inc</strong><br>
-								 Modernbuilding suite V124, AB 01<br>
-								 Someplace 16425 Earth 
+								<strong>Job4U</strong><br>
+								 64/577,Job4U<br>
+								 Ernakulam,Kerala 
 							</address>
 							<p>
-								<i class="icon-phone"></i> (123) 456-7890 - (123) 555-7891 <br>
-								<i class="icon-envelope-alt"></i> email@domainname.com
+								<i class="icon-phone"></i> +91 9497024355 <br>
+								<i class="icon-envelope-alt"></i> job4u@gmail.com
 							</p>
 						</div>
 					</div>
@@ -220,9 +220,9 @@
 						<div class="widget">
 							<h5 class="widgetheading">Latest posts</h5>
 							<ul class="link-list">
-								<li><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></li>
-								<li><a href="#">Pellentesque et pulvinar enim. Quisque at tempor ligula</a></li>
-								<li><a href="#">Natus error sit voluptatem accusantium doloremque</a></li>
+								<li><a href="#">Job post 1</a></li>
+								<li><a href="#">Job post 2</a></li>
+								<li><a href="#">Job post 3</a></li>
 							</ul>
 						</div>
 					</div>
