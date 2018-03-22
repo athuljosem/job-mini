@@ -11,9 +11,12 @@ if(isset($_POST["submit"])) {
 	$minimumsalary = mysqli_real_escape_string($conn, $_POST['minimumsalary']);
 	$maximumsalary = mysqli_real_escape_string($conn, $_POST['maximumsalary']);
 	$experience = mysqli_real_escape_string($conn, $_POST['experience']);
+	$ugmark=mysqli_real_escape_string($conn, $_POST['ug_mark']);
+	$pgmark=mysqli_real_escape_string($conn, $_POST['pg_mark']);
 	// $qualification = mysqli_real_escape_string($conn, $_POST['qualification']);
 	$ugcourse="";
 	$pgcourse="";
+	
 
 	if(!empty($_POST['ugcheck']))
 	{
@@ -36,7 +39,7 @@ $pgcourse=$pgcourse." ".$selected;
 }
 
 	//Update Query
-	$sql = "INSERT INTO job_post(id_company,jobtitle,description,minimumsalary,maximumsalary,experience,ug_course,pg_course) VALUES ( '$_SESSION[companyid]', '$jobtitle', '$description', '$minimumsalary', '$maximumsalary', '$experience', '$ugcourse','$pgcourse')";
+	$sql = "INSERT INTO job_post(id_company,jobtitle,description,minimumsalary,maximumsalary,experience,ug_course,ug_mark,pg_course,pg_mark) VALUES ( '$_SESSION[companyid]', '$jobtitle', '$description', '$minimumsalary', '$maximumsalary', '$experience', '$ugcourse','$ugmark','$pgcourse','$pgmark')";
 
 
 	if($conn->query($sql) === TRUE) {

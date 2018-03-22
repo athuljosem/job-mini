@@ -25,7 +25,7 @@
         <div class="form-group">
           <!-- <input type="text" class="form-control  input-lg" id="qualification" name="qualification" placeholder="Qualification Required" required=""> -->
         </div>
-        <div class="col-md-9 col-sm-9 col-xs-12">
+        <!-- <div class="col-md-9 col-sm-9 col-xs-12"> -->
 
 
           <h2>UG Courses</h2>
@@ -48,7 +48,16 @@
             }
           }
           ?>
-          <br><h2>PG Courses</h2>
+          <div class="form-inline">
+            <label>
+              Minimum Percentage:
+            </label>
+            <input type="text" style="width: 50px !important;" class="form-control" id="ug_mark" name="ug_mark" placeholder="%" required="1"/>
+    
+          </div>
+
+          
+          <h2>PG Courses</h2>
           <?php
           $sql = "SELECT DISTINCT qualification,subject FROM user_qualification WHERE q_level='PG'";
           $result = $conn->query($sql);
@@ -69,8 +78,15 @@
               }
             }
             ?>
+            <div class="form-inline">
+            <label>
+              Minimum Percentage:
+            </label>
+            <input type="text" style="width: 50px !important;" class="form-control" id="pg_mark" name="pg_mark" placeholder="%" required="1" />
+    
           </div>
-        </div>
+            <!-- </div> -->
+          </div>
 
 
 
