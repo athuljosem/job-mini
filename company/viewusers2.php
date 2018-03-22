@@ -1,4 +1,5 @@
 <?php include 'header.php' ?>
+
 <div class="right_col" role="main">
 
   <div class="col-md-12">
@@ -30,7 +31,10 @@
           </thead>
           <tbody>
             <tr>
-              <td>Tiger Nixon</td>
+              <td>
+                <span class="fa fa-plus-circle text-primary fa-lg" data-toggle="modal" data-target="#these-words-should-be-the-same"></span>
+                Tiger Nixon
+              </td>
               <td>System Architect</td>
               <td>Edinburgh</td>
               <td>61</td>
@@ -40,6 +44,35 @@
 
           </tbody>
         </table>
+
+        <div id="these-words-should-be-the-same" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+              </div>
+
+              <div class="modal-body">
+                <!-- athul put your qualifictions here -->
+                <ui class="list-group">
+                  <li class="list-group-item">B.tech</li>
+                  <li class="list-group-item">M.tech</li>
+                  <li class="list-group-item">N.tech</li>
+                  <li class="list-group-item">L.tech</li>
+                  <li class="list-group-item">O.tech</li>
+                </ui>
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
       </div>
     </div>
   </div>
