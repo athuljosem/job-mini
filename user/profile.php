@@ -1,4 +1,4 @@
-<?<?php include 'header.php' ?>
+<?php include 'header.php' ?>
 <?php
 
 $sql = "SELECT * FROM users WHERE user_id='$_SESSION[userid]'";
@@ -12,8 +12,8 @@ if($result->num_rows > 0) {
     
     <div class="right_col" role="main">
       <div class="">
-        
-        
+
+
         <div class="clearfix"></div>
 
         <div class="row">
@@ -59,30 +59,66 @@ if($result->num_rows > 0) {
                   <br />
 
                   <!-- start skills -->
+                  <?php
+                  $ug_course="";
+                  $ug_branch="";
+                  $ug_percentage="";
+                  $pg_course="";
+                  $pg_branch="";
+                  $pg_percentage="";
+                  $sql1 = "SELECT * FROM user_qualification WHERE user_id='$_SESSION[userid]' AND q_level='UG'";
+                  $result1 = $conn->query($sql1);
+
+                      //If Job Post exists then display details of post
+                  if($result1->num_rows > 0) {
+                    while($row1 = $result1->fetch_assoc()) 
+                    {
+                      $ug_course=$row1["qualification"];
+                      $ug_branch=$row1["subject"];
+                      $ug_percentage=$row1["percentage"];
+                    }
+                  }
+                  ?>
+
+                  <?php
+                  $sql2 = "SELECT * FROM user_qualification WHERE user_id='$_SESSION[userid]' AND q_level='PG'";
+                  $result2 = $conn->query($sql2);
+
+                      //If Job Post exists then display details of post
+                  if($result2->num_rows > 0) 
+                  {
+                    while($row2 = $result2->fetch_assoc()) 
+                    {
+                      $pg_course=$row2["qualification"];
+                      $pg_branch=$row2["subject"];
+                      $pg_percentage=$row2["percentage"];
+                    }
+                  }
+                  ?>
                   <h4>Skills</h4>
                   <ul class="list-unstyled user_data">
                     <li>
-                      <p>Web Applications</p>
+                      <p>SSLC</p>
                       <div class="progress progress_sm">
                         <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50"></div>
                       </div>
                     </li>
                     <li>
-                      <p>Website Design</p>
+                      <p>+2</p>
                       <div class="progress progress_sm">
                         <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="70"></div>
                       </div>
                     </li>
                     <li>
-                      <p>Automation & Testing</p>
+                      <p>UG-<?php echo $ug_percentage; ?>%</p>
                       <div class="progress progress_sm">
-                        <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="30"></div>
+                        <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="<?php echo $ug_percentage; ?>"></div>
                       </div>
                     </li>
                     <li>
-                      <p>UI / UX</p>
+                      <p>PG-<?php echo $pg_percentage; ?>%</p>
                       <div class="progress progress_sm">
-                        <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50"></div>
+                        <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="<?php echo $pg_percentage; ?>"></div>
                       </div>
                     </li>
                   </ul>
@@ -91,16 +127,16 @@ if($result->num_rows > 0) {
                 </div>
                 <!-- edit profile -->
                 <div class="col-md-9 col-sm-9 col-xs-8">
-                  
+
 
                   <div id="editprofile">                                   
                    <section class="login_content">
                     <div class="container">
                       <div class="">
                         <div class="col-md-8 col-md-offset-2 well">
-                          
+
                           <form method="post" action="updateprofile.php" enctype="multipart/form-data" class="form-horizontal form-label-left input_mask">
-                            
+
                             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                               <label for="fname">First Name</label>
                               <input type="text" class="form-control has-feedback-left" id="fname" name="fname" placeholder="First Name" value="<?php echo $row['fname']; ?>" required="">
