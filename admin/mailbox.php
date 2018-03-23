@@ -119,7 +119,7 @@
                         //if($result->num_rows > 0) 
                        // {
                          // while($row = $result->fetch_assoc()) 
-                          {
+                          //{
                            $sql1 = "SELECT * FROM admin_mailbox WHERE id_admin=$mailuser";
                            $mailuser=-1;
                            
@@ -224,8 +224,8 @@
                         </div>
                         <?php
 
-                      }
-                    }
+                    //  }
+                    //}
                   }
                 }
                 ?>

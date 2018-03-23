@@ -24,7 +24,7 @@ if (mysqli_connect_errno()) {
     exit();
     }
     //$rs = @mysql_select_db ($conn, "job") or die ("error");
-    $sql = "SELECT * FROM users WHERE email = '$email' AND password = '$pass'";
+    $sql = "SELECT * FROM users WHERE email = '$email' AND password = '$pass' AND active='1'";
     //$rs = mysqli_query($sql,$conn);
   
     //$email=$sql(row[5]);
