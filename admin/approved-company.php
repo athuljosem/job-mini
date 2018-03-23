@@ -30,7 +30,7 @@
                     </thead>
                     <tbody>
                       <?php
-                      $sql = "SELECT * FROM company";
+                      $sql = "SELECT * FROM company WHERE active='1'";
                       $result = $conn->query($sql);
                       if($result->num_rows > 0) {
                         while($row = $result->fetch_assoc()) {
