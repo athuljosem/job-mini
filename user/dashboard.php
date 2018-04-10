@@ -86,7 +86,7 @@
                     </ul>
                   </div>
                   <div class="right col-xs-5 text-center">
-                    <img src="../images/img.jpg" alt="" class="img-circle img-responsive">
+                    <img src="../images/user.png" alt="" class="img-circle img-responsive">
                   </div>
                 </div>
                 <div class="col-xs-12 bottom text-center">
@@ -109,7 +109,7 @@
                     else
                     {
                       ?>
-                      <td><a href="view.php?id=<?php echo $row['id_jobpost']; ?>"><button class="btn btn_success bg-red" >Not Applied </button></a></td>
+                      <td><a href="view.php?id=<?php echo $row['id_jobpost']; ?>"><button class="btn btn_success bg-blue" >Apply Now </button></a></td>
                       <?php }
                       
                       ?>

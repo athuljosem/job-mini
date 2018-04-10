@@ -1,5 +1,4 @@
  <?php session_start();
- var_dump($_POST);
  if(isset($_SESSION['id_admin'])) 
  {
  header('Location: dashboard.php');
